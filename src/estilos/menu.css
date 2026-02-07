@@ -275,55 +275,67 @@
 
 /* --- FIX RESPONSIVE PARA EL MENÚ --- */
 
+/* --- FIX: MENÚ SIEMPRE HORIZONTAL --- */
+
 @media (max-width: 768px) {
     .menu {
-        /* Permitimos que el menú crezca en altura si es necesario */
-        height: auto; 
-        min-height: 70px;
-        padding: 10px 5%;
-        flex-wrap: wrap; /* Clave: permite que los elementos bajen a la siguiente línea */
-        justify-content: space-between;
-    }
-
-    /* Forzamos que el logo (pelota) y el usuario se queden arriba */
-    .menu-left, .menu-right {
-        flex: 0 0 auto;
-    }
-
-    /* El grupo central de links se va a una nueva fila abajo */
-    .menu-center-group {
-        flex: 1 0 100%; /* Ocupa el 100% del ancho */
-        order: 3; /* Lo manda al final del flujo */
+        height: 70px; /* Altura fija y delgada */
         display: flex;
-        justify-content: space-around;
-        margin-top: 15px;
-        padding-top: 10px;
-        border-top: 2px dashed #000; /* Separador sutil pero brutalista */
-        gap: 5px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        flex-wrap: nowrap; /* Prohibimos que los elementos bajen */
+        gap: 10px;
     }
 
-    .menu-center-group a {
-        font-size: 0.75rem; /* Texto más pequeño para que no se amontone */
-        padding: 6px 10px;
-        border-width: 2px;
-    }
-
-    /* Ajuste del botón de Login/Usuario */
-    .menu-right > a, .user-menu-container {
-        font-size: 0.7rem;
-        padding: 8px 12px;
+    /* 1. Bloque izquierdo y derecho más pequeños */
+    .menu-left, .menu-right {
+        flex: 0 0 auto; 
     }
 
     .pelota {
-        width: 35px; /* Pelota un poco más pequeña */
+        width: 35px;
         height: 35px;
     }
 
-    /* El carrito desplegable debe cubrir más ancho en móvil */
-    .carrito-dropdown {
-        width: 95vw;
-        left: 2.5vw;
-        top: 110px; /* Ajustado por la nueva altura del menú */
+    /* 2. EL TRUCO: Scroll horizontal para los links centrales */
+    .menu-center-group {
+        flex: 1; /* Ocupa el espacio sobrante en el centro */
+        display: flex;
+        justify-content: flex-start; /* Alinea al inicio para permitir scroll */
+        gap: 8px;
+        overflow-x: auto; /* Habilita el movimiento lateral */
+        white-space: nowrap; /* Evita que el texto salte de línea */
+        padding: 5px 0;
+        
+        /* Ocultamos la barra de scroll para que se vea limpio */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    .menu-center-group::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+
+    /* 3. Estilo de los links más compacto */
+    .menu-center-group a {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+        border-width: 2px;
+        text-transform: uppercase;
+        flex-shrink: 0; /* Evita que los links se aplasten */
+    }
+
+    /* 4. Botón de Login/Usuario minimalista */
+    .menu-right > a, .user-menu-container {
+        font-size: 0.65rem;
+        padding: 6px 10px;
+        box-shadow: 2px 2px 0px #e74c3c;
+    }
+
+    .avatar-trigger {
+        width: 35px;
+        height: 35px;
     }
 }
 
