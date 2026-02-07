@@ -1,12 +1,10 @@
 // src/servicios/servicioPosiciones.js
-import axios from "axios";
+import { supabase } from "../lib/supabase";
 
-// Asegúrate de que esta URL coincida con tu json-server
-// Si usas el puerto 3000 o 3001, cámbialo aquí.
-const BASE_URL = "http://localhost:3000/posiciones";
-
-const getAll = () => {
-    return axios.get(BASE_URL);
+const getAll = async () => {
+    const { data, error } = await supabase.from('posiciones').select('*');
+    if (error) throw error;
+    return { data }; // Mantenemos el formato { data: [...] }
 };
 
 export default { getAll };

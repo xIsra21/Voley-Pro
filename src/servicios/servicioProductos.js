@@ -1,35 +1,41 @@
-
-import http from "./http-axios.js";
+// src/servicios/servicioProductos.js
+import { supabase } from "../lib/supabase"; 
 
 class servicioProductos {
-  getAll() {
-    return http.get("/productos");
+  // Obtenemos todos los productos
+  async getAll() {
+    const { data, error } = await supabase.from('productos').select('*');
+    if (error) throw error;
+    return { data }; // Devolvemos { data: [...] } para que coincida con lo que hacía Axios
   }
 
-  getProductById(id) {
-    return http.get("/productos").then(response => {
-      return response.data.find(p => 
-        p.id.toString().toLowerCase() === id.toString().toLowerCase());
-    });
+  // Buscar por ID (reutilizando la lógica de búsqueda en array que ya tenías)
+  async getProductById(id) {
+    const { data, error } = await supabase.from('productos').select('*');
+    if (error) throw error;
+    return data.find(p => p.id.toString().toLowerCase() === id.toString().toLowerCase());
   }
 
-  get(id) {
-    return http.get(`/productos/${id}`);
+  // Obtener uno solo por ID de base de datos
+  async get(id) {
+    const { data, error } = await supabase.from('productos').select('*').eq('id', id).single();
+    if (error) throw error;
+    return { data };
   }
 
-  create(data) {
-    return http.post("/productos", data);
+  async create(data) {
+    return await supabase.from('productos').insert([data]);
   }
 
-  update(id, data) {
-    console.log(id,data)
-    return http.put(`/productos/${id}`, data);
+  async update(id, data) {
+    // Eliminamos el ID de la data para no intentar actualizar la clave primaria
+    const { id: _, ...updateData } = data;
+    return await supabase.from('productos').update(updateData).eq('id', id);
   }
 
-  delete(id) {
-    return http.delete(`/productos/${id}`);
+  async delete(id) {
+    return await supabase.from('productos').delete().eq('id', id);
   }
-
 }
 
 export default new servicioProductos();
