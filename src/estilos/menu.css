@@ -273,61 +273,64 @@
     }
 }
 
+/* --- FIX RESPONSIVE PARA EL MENÚ --- */
+
 @media (max-width: 768px) {
     .menu {
-        height: auto;
+        /* Permitimos que el menú crezca en altura si es necesario */
+        height: auto; 
+        min-height: 70px;
         padding: 10px 5%;
-        flex-wrap: wrap; /* Permite que el contenido baje si no cabe */
+        flex-wrap: wrap; /* Clave: permite que los elementos bajen a la siguiente línea */
+        justify-content: space-between;
     }
 
-    .menu-left {
-        flex: 0 0 auto; /* No crece, se queda a la izquierda */
+    /* Forzamos que el logo (pelota) y el usuario se queden arriba */
+    .menu-left, .menu-right {
+        flex: 0 0 auto;
     }
 
-    .menu-right {
-        flex: 0 0 auto; /* Se queda a la derecha */
-    }
-
+    /* El grupo central de links se va a una nueva fila abajo */
     .menu-center-group {
-        flex: 0 0 100%; /* Ocupa todo el ancho abajo */
-        order: 3; /* Lo manda al final */
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px dashed #000;
+        flex: 1 0 100%; /* Ocupa el 100% del ancho */
+        order: 3; /* Lo manda al final del flujo */
+        display: flex;
         justify-content: space-around;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 2px dashed #000; /* Separador sutil pero brutalista */
+        gap: 5px;
     }
 
     .menu-center-group a {
-        font-size: 0.75rem;
-        padding: 5px;
+        font-size: 0.75rem; /* Texto más pequeño para que no se amontone */
+        padding: 6px 10px;
+        border-width: 2px;
     }
 
-    /* CARRITO DESPLEGABLE EN MÓVIL */
-    .carrito-dropdown {
-        width: 90%;
-        left: 5%;
-        top: 120px; /* Ajustado para el nuevo alto del menú */
-        box-shadow: 8px 8px 0px #000;
-    }
-}
-
-@media (max-width: 480px) {
-    .menu-right > a {
-        padding: 8px 12px;
-        font-size: 0.75rem;
-        box-shadow: 3px 3px 0px #e74c3c;
-    }
-
-    .user-menu-container {
+    /* Ajuste del botón de Login/Usuario */
+    .menu-right > a, .user-menu-container {
         font-size: 0.7rem;
+        padding: 8px 12px;
     }
 
     .pelota {
-        width: 40px;
-        height: 40px;
+        width: 35px; /* Pelota un poco más pequeña */
+        height: 35px;
     }
 
-    .item-info .name {
-        font-size: 0.8rem;
+    /* El carrito desplegable debe cubrir más ancho en móvil */
+    .carrito-dropdown {
+        width: 95vw;
+        left: 2.5vw;
+        top: 110px; /* Ajustado por la nueva altura del menú */
+    }
+}
+
+@media (max-width: 400px) {
+    /* En pantallas mini, quitamos texto innecesario o reducimos más */
+    .menu-center-group a {
+        font-size: 0.65rem;
+        padding: 5px;
     }
 }
