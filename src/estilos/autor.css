@@ -171,7 +171,7 @@
 
     .info-card {
         /* Restamos el tamaño de la sombra para que no se salga por la derecha */
-        width: calc(100% - 8px); 
+        width: calc(100% - 10px);
         box-shadow: 5px 5px 0px #e74c3c;
     }
 
