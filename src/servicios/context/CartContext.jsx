@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useEffect, useCallback } from 'react';
 import UseStorageState from '../storage/UseStorageState';
 import { toast } from "react-toastify";
-import { supabase } from '../../lib/supabase';
+import { supabase } from '../lib/supabase';
 import { useAuth } from './AuthContext';
 
 const CartContext = createContext();
