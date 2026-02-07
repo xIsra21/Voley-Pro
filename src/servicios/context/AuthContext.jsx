@@ -10,22 +10,23 @@ export const AuthProvider = ({ children }) => {
   const [role, setRole] = useState(null) // <-- Nuevo estado para el rol
   const [loading, setLoading] = useState(true)
 
-  // Función para obtener el rol desde la base de datos
-  const fetchUserRole = async (userId) => {
-    try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('id', userId)
-        .single()
+  // src/servicios/context/AuthContext.jsx
 
-      if (error) throw error
-      setRole(data?.role || 'user')
-    } catch (err) {
-      console.error("Error al obtener el rol:", err.message)
-      setRole('user') // Valor por defecto si hay error
-    }
+const fetchUserRole = async (userId) => {
+  try {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', userId)
+      .maybeSingle(); // Usamos maybeSingle para que no explote si no encuentra nada
+
+    if (error) throw error;
+    setRole(data?.role || 'user');
+  } catch (err) {
+    console.error("Error de conexión con tabla profiles:", err.message);
+    setRole('user'); // Si falla la DB, por defecto es usuario normal para no romper la app
   }
+};
 
   useEffect(() => {
     // 1. Carga inicial
