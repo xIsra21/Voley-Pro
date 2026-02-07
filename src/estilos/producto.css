@@ -83,6 +83,11 @@
     color: #666;
 }
 
+img {
+    width: 100%;
+    height: 500px;
+}
+
 .producto-precio-big {
     font-size: 3rem;
     font-weight: 900;
