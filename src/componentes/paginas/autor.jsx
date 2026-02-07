@@ -60,8 +60,13 @@ const Autor = () => {
                 <span>React 18</span>
                 <span>Vite</span>
                 <span>Framer Motion</span>
+                <span>React Router Dom</span>
+                <span>React Toastify</span>
+                <span>Supabase</span>
+                <span>Vercel</span>
                 <span>Context API</span>
                 <span>CSS3 Modern</span>
+                <span>Google Cloud</span>
             </div>
             </motion.div>
         </motion.div>
