@@ -9,7 +9,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import { CarritoPdf } from './carritoPdf';
 import { toast } from "react-toastify";
 import UserMenu from './UserMenu';
-import { supabase } from '../../lib/supabase'; // IMPORTANTE: Verifica esta ruta
+import { supabase } from '../lib/supabase'; // IMPORTANTE: Verifica esta ruta
 
 // Componente Interno del Botón PDF
 export const BotonPDFCheckout = memo(({ productos, total, onFinalizar }) => (
