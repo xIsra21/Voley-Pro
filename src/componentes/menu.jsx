@@ -1,54 +1,72 @@
-// Menu.jsx
 import '../estilos/menu.css'
 import { useAuth } from '../servicios/context/AuthContext';
 import Links from './links'
 import { Link } from "react-router-dom"
-import { useState } from "react";
+import { useState, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from '../servicios/context/CartContext';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import { memo } from 'react';
 import { CarritoPdf } from './carritoPdf';
-import { toast } from "react-toastify"; // Importante para feedback
+import { toast } from "react-toastify";
 import UserMenu from './UserMenu';
+import { supabase } from '../../lib/supabase'; // IMPORTANTE: Verifica esta ruta
 
+// Componente Interno del Botón PDF
 export const BotonPDFCheckout = memo(({ productos, total, onFinalizar }) => (
   <PDFDownloadLink
     document={<CarritoPdf productos={productos} total={total} />}
-    fileName="resumen_compra.pdf"
+    fileName={`VoleyPro_Pedido_${new Date().getTime()}.pdf`}
   >
     {({ loading }) => (
       <button 
         className="checkout-btn" 
         disabled={loading}
         onClick={() => {
-            // Solo ejecutamos el vaciado si no está cargando el PDF
             if(!loading) onFinalizar();
         }}
       >
-        Finalizar Compra
+        {loading ? 'Generando PDF...' : 'Finalizar Compra'}
       </button>
     )}
   </PDFDownloadLink>
 ));
 
 function Menu() {
-  const { user, signOut } = useAuth();
-  // Extraemos setProductos y setTotal del contexto del carrito
+  const { user } = useAuth();
   const { total, productos, setProductos, setTotal, eliminarDelCarrito } = useCart();
   const [carritoVisible, setCarritoVisible] = useState(false);
   
   const totalUnidades = productos.reduce((acc, p) => acc + p.cantidad, 0);
 
-  // FUNCIÓN PRAGMÁTICA PARA VACIAR EL CARRITO
-  const handleFinalizarCompra = () => {
-    // Retrasamos ligeramente el vaciado para permitir que el navegador inicie la descarga del PDF
-    setTimeout(() => {
-      setProductos([]); // Borra los productos
-      setTotal(0);      // Resetea el total
-      setCarritoVisible(false); // Cierra el menú desplegable
-      toast.success("¡Compra finalizada! Descargando resumen...");
-    }, 500);
+  // FUNCIÓN PARA VACIAR TODO (DB, LOCAL Y ESTADO)
+  const handleFinalizarCompra = async () => {
+    // Retraso para que el PDF capture los datos antes de borrar el estado
+    setTimeout(async () => {
+      try {
+        // 1. Limpiar Supabase si el usuario está logueado
+        if (user) {
+          const { error } = await supabase
+            .from('carrito')
+            .delete()
+            .eq('user_id', user.id);
+          
+          if (error) console.error("Error limpiando DB:", error.message);
+        }
+
+        // 2. Limpiar LocalStorage (invitados)
+        localStorage.removeItem('carrito_invitado');
+
+        // 3. Limpiar Estado de React (UI)
+        setProductos([]);
+        setTotal(0);
+        setCarritoVisible(false);
+
+        toast.success("¡Pedido finalizado y carrito vaciado!");
+      } catch (error) {
+        console.error("Error en el checkout:", error);
+        toast.error("Error al procesar el cierre del carrito");
+      }
+    }, 800);
   };
 
   return (
@@ -79,19 +97,19 @@ function Menu() {
           )}
         </div>
       </div>
+
       <div className="menu-center-group">
         <Links />
       </div>
+
       <div className="menu-right">
         {user ? (
-            <>
-              <UserMenu />
-            </>
-            ) : (
-            <Link to="/login">Iniciar Sesión</Link>
-            )}
-      
+          <UserMenu />
+        ) : (
+          <Link to="/login">Iniciar Sesión</Link>
+        )}
       </div>
+
       <AnimatePresence>
         {carritoVisible && (
           <motion.div 
@@ -113,7 +131,6 @@ function Menu() {
                       <span className="name">{p.producto.nombre}</span>
                     </div>
                     
-                    {/* Agrupamos precio y botón para alinearlos con Flexbox */}
                     <div className="item-price-actions">
                       <span className="price">
                         {(p.producto.precio * p.cantidad).toFixed(2)}€
@@ -141,7 +158,6 @@ function Menu() {
                   <strong>{total.toFixed(2)} €</strong>
                 </div>
                 
-                {/* Pasamos la función de vaciado al botón */}
                 <BotonPDFCheckout
                   productos={productos}
                   total={total}
