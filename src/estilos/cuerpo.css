@@ -1,0 +1,103 @@
+/* src/estilos/cuerpo.css */
+
+.main-landing {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    /* Fondo de puntos característico de tu web */
+    background-color: #f8f8f8;
+    background-image: radial-gradient(#d1d1d1 2px, transparent 2px);
+    background-size: 30px 30px;
+}
+
+.landing-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.landing-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background: #fff;
+    padding: 60px;
+    border: 4px solid #000;
+    box-shadow: 20px 20px 0px #000; /* Sombra brutalista XL */
+    max-width: 800px;
+    width: 90%;
+}
+
+.landing-title {
+    font-size: 5rem;
+    font-weight: 950;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: #000;
+}
+
+.red-box {
+    background: #e74c3c;
+    color: #fff;
+    padding: 0 15px;
+    border: 4px solid #000;
+    display: inline-block;
+    transform: rotate(-2deg); /* Toque rebelde */
+}
+
+.landing-subtitle {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: 30px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* GRID DE BOTONES */
+.landing-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.landing-btn {
+    padding: 20px;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 3px solid #000;
+    transition: 0.1s;
+    outline: none;
+}
+
+/* Variantes de botones */
+.landing-btn.yellow {
+    background: #f1a90f;
+    box-shadow: 6px 6px 0px #000;
+}
+
+.landing-btn.white {
+    background: #fff;
+    box-shadow: 6px 6px 0px #000;
+}
+
+.landing-btn.black {
+    background: #000;
+    color: #fff;
+    box-shadow: 6px 6px 0px #e74c3c; /* Sombra roja para el login */
+}
+
+/* Ajuste Responsive */
+@media (max-width: 768px) {
+    .landing-title { font-size: 3rem; }
+    .landing-content { padding: 30px; }
+}

@@ -1,0 +1,77 @@
+/* src/estilos/modal.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Oscurece el fondo para resaltar el blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px); /* Un ligero desenfoque para separar planos */
+}
+
+.modal-content {
+    background: #fff;
+    padding: 40px;
+    border: 4px solid #000; /* Borde muy grueso */
+    box-shadow: 20px 20px 0px #000; /* Sombra sólida gigante para máximo contraste */
+    position: relative;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* BOTÓN DE CERRAR "X" */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #000;
+    color: #fff;
+    border: 2px solid #000;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    background: #e74c3c; /* Rojo voley al pasar el ratón */
+    transform: rotate(90deg); /* Efecto divertido al cerrar */
+}
+
+/* Animación de entrada "pop" */
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Personalización del scroll interno del modal */
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #000;
+    border: 2px solid #f0f0f0;
+}

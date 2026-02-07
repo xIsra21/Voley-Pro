@@ -1,0 +1,93 @@
+/* src/estilos/crear.css */
+
+.crear {
+    padding: 10px;
+    background: #fff;
+}
+
+.crear h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    border-bottom: 4px solid #000;
+    display: inline-block;
+}
+
+/* ESTRUCTURA DEL FORMULARIO */
+.crear form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.crear label {
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: -15px; /* Acerca el label al input */
+    color: #000;
+    letter-spacing: 1px;
+}
+
+/* INPUTS ESTILO BRUTALISTA */
+.crear input {
+    padding: 15px;
+    border: 3px solid #000; /* Borde grueso característico */
+    font-size: 1rem;
+    font-weight: 700;
+    background: #fff;
+    box-shadow: 4px 4px 0px #000; /* Sombra sólida */
+    transition: 0.2s;
+    outline: none;
+}
+
+.crear input:focus {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0px #f1a90f; /* Cambia a amarillo al enfocar */
+}
+
+/* GESTIÓN DE ERRORES */
+.error {
+    background: #ffdbdb;
+    color: #e74c3c; /* Rojo voley */
+    padding: 8px;
+    border: 2px solid #e74c3c;
+    font-weight: 800;
+    font-size: 0.8rem;
+    margin-top: -10px;
+    text-transform: uppercase;
+}
+
+/* BOTÓN DEL FORMULARIO */
+.admin-btn {
+    margin-top: 10px;
+    padding: 18px;
+    background: #000;
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    border: 3px solid #000;
+    cursor: pointer;
+    box-shadow: 6px 6px 0px #e74c3c; /* Sombra roja para el botón principal */
+    transition: 0.2s;
+}
+
+.admin-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px #e74c3c;
+    background: #111;
+}
+
+.admin-btn:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0px #e74c3c;
+}
+
+/* Estilo para placeholder */
+.crear input::placeholder {
+    color: #bbb;
+    font-weight: 400;
+    text-transform: none;
+}

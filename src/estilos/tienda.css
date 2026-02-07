@@ -1,0 +1,199 @@
+/* src/estilos/tienda.css */
+
+.tienda-wrapper {
+    margin-top: 100px;
+    padding: 0 5%;
+    background-color: #f8f8f8;
+    background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+    background-size: 20px 20px;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    overflow-anchor: none; /* Evita saltos de scroll al re-renderizar */
+}
+/* BUSCADOR BRUTALISTA */
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.search-box-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.brutal-input {
+    margin-top: 30px;
+    width: 100%;
+    padding: 16px;
+    border: 3px solid #000;
+    box-shadow: 8px 8px 0px #000;
+    font-weight: 800;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+}
+
+.brutal-input:focus {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0px #000;
+}
+
+.clear-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+/* SUBMENÚ STICKY */
+.submenu-categorias {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: transparent;
+    flex-wrap: wrap;
+}
+
+.brutal-cat-btn {
+    padding: 10px 20px;
+    background: #fff;
+    border: 2px solid #000;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.brutal-cat-btn:hover {
+    background: #000;
+    color: #fff;
+    box-shadow: 4px 4px 0px #f1a90f; /* Naranja de tu tema */
+    transform: translate(-1px, -1px);
+}
+
+.brutal-cat-btn.active {
+    background: #000;
+    color: #fff;
+    box-shadow: 4px 4px 0px #f1a90f; /* Naranja de tu tema */
+    transform: translate(-2px, -2px);
+}
+
+/* TARJETAS DE PRODUCTO BRUTALISTAS */
+.cuerpo {
+    display: grid;
+    /* Usamos auto-fill para que las celdas vacías no empujen el footer hacia abajo */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 40px 0;
+    justify-content: center;
+    /* Importante para AnimatePresence popLayout */
+    position: relative; 
+    min-height: 400px; 
+}
+
+.brutal-card {
+    background: #fff;
+    border: 3px solid #000;
+    box-shadow: 10px 10px 0px #000;
+    padding: 20px;
+    transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.brutal-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px #e74c3c; /* Rojo de tu tema */
+}
+
+.img-container {
+    background: #f0f0f0;
+    border-bottom: 2px solid #000;
+    margin: -20px -20px 15px -20px;
+    padding: 20px;
+}
+
+.precio-tag {
+    display: inline-block;
+    background: #f1a90f;
+    color: #000;
+    padding: 5px 10px;
+    font-weight: 900;
+    border: 2px solid #000;
+    margin-top: 10px;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    margin-top: 15px;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.img-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.img-container img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+/* src/estilos/tienda.css */
+
+.brutal-card h3 {
+    font-size: 1rem;
+    font-weight: 900; /* Peso máximo para que se vea potente */
+    margin: 0 0 10px 0;
+    min-height: 2.4em; 
+    
+    color: #000; /* Aseguramos que sea negro sólido */
+    
+    /* ELIMINAMOS ESTO SI EXISTE: */
+    -webkit-text-stroke: 0; 
+    text-shadow: none;
+    text-decoration: none;
+}
+
+/* Opcional: si quieres que al pasar el ratón cambie de color como tu login */
+.brutal-card:hover h3 {
+    color: #000; /* Se mantiene negro o cámbialo a var(--primary) si quieres color */
+}
+
+.producto-card {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.no-results {
+    text-align: center;
+    padding: 100px 0;
+    width: 100%;
+}

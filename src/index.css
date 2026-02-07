@@ -1,0 +1,98 @@
+:root {
+  --primary: #e60000; /* Rojo Volley */
+  --primary-hover: #ff3333;
+  --bg-dark: #111111;
+  --bg-light: #f8f9fa;
+  --text-main: #333333;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  margin: 0;
+  background-color: #f8f8f8;
+  background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--text-main);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+/* --- ESTILO DE LA BARRA DE NAVEGACIÓN LATERAL (SCROLLBAR) --- */
+
+/* 1. Ancho de la barra */
+::-webkit-scrollbar {
+  width: 20px;               /* Ancho para scroll vertical */
+  height: 20px;              /* Alto para scroll horizontal */
+}
+
+/* 2. El fondo de la barra (Track) */
+::-webkit-scrollbar-track {
+  background: #5c5c5c;       /* Un gris muy claro, casi blanco */
+}
+
+/* 3. La pieza que se mueve (Thumb) */
+::-webkit-scrollbar-thumb {
+  background: var(--primary, #e74c3c); /* Tu rojo voley */
+  border: 2px solid #f1f1f1; /* Crea un efecto de separación muy elegante */
+}
+
+/* 4. Efecto al pasar el ratón por encima */
+::-webkit-scrollbar-thumb:hover {
+  background: #c0392b;       /* Un rojo un poco más oscuro al interactuar */
+}
+
+/* Soporte para Firefox (que usa propiedades distintas) */
+* {
+  scrollbar-color: #e74c3c rgb(0, 0, 0);
+}
+
+/* Estilos para SweetAlert2 Neo-Brutalista */
+
+/* El contenedor principal de la alerta */
+.brutal-popup {
+    border: 4px solid #000 !important;
+    border-radius: 0 !important; /* Cuadrado total */
+    box-shadow: 12px 12px 0px #000 !important; /* Sombra sólida pesada */
+    background-color: #fff !important;
+}
+
+/* El título de la alerta */
+.brutal-title {
+    font-family: 'Inter', sans-serif; /* O la que uses */
+    font-weight: 950 !important;
+    text-transform: uppercase;
+    color: #000 !important;
+    letter-spacing: -1px;
+}
+
+/* El texto del contenido */
+.brutal-content {
+    font-weight: 700 !important;
+    color: #000 !important;
+}
+
+/* BOTONES PERSONALIZADOS */
+.brutal-confirm-btn {
+    background-color: #f1a90f !important; /* Amarillo */
+    color: #000 !important;
+    border: 3px solid #000 !important;
+    border-radius: 0 !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    box-shadow: 4px 4px 0px #000 !important;
+    transition: 0.1s !important;
+}
+
+.brutal-confirm-btn:hover {
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 6px 6px 0px #000 !important;
+}
+
+.brutal-cancel-btn {
+    background-color: #e74c3c !important; /* Rojo */
+    color: #fff !important;
+    border: 3px solid #000 !important;
+    border-radius: 0 !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    box-shadow: 4px 4px 0px #000 !important;
+}

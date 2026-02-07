@@ -1,0 +1,108 @@
+/* src/estilos/Usermenu.css */
+
+.user-menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* EL TRIGGER (AVATAR) */
+.avatar-trigger {
+    width: 45px;
+    height: 45px;
+    border: 3px solid #000;
+    background: #f1a90f; /* Amarillo de marca */
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 0px #000;
+    transition: 0.1s;
+}
+
+.avatar-trigger:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000;
+}
+
+.avatar-trigger img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-initials {
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: #000;
+}
+
+/* EL DESPLEGABLE (DROPDOWN) */
+.user-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 220px;
+    background: #fff;
+    border: 3px solid #000;
+    box-shadow: 8px 8px 0px #000; /* Sombra sólida pesada */
+    z-index: 2100;
+    padding: 0;
+}
+
+.dropdown-info {
+    background: #000;
+    color: #fff;
+    padding: 12px;
+    border-bottom: 3px solid #000;
+}
+
+.dropdown-info p {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    word-break: break-all;
+    text-transform: none; /* Mantener email legible */
+}
+
+/* LISTA DE OPCIONES */
+.dropdown-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-nav li {
+    padding: 12px 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-bottom: 2px solid #000;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-nav li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-nav li:hover {
+    background: #f1a90f; /* Amarillo al pasar el ratón */
+    color: #000;
+}
+
+/* BOTÓN CERRAR SESIÓN ESPECÍFICO */
+.dropdown-nav li.logout-btn:hover {
+    background: #e74c3c; /* Rojo voley para logout */
+    color: #fff;
+}
+
+/* Ajuste de iconos dentro de la lista */
+.dropdown-nav li span {
+    font-size: 1.1rem;
+}
+

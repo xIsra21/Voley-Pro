@@ -1,0 +1,950 @@
+{
+  "productos": [
+    {
+      "id": "f4af1a56-6067-462c-a711-143bc19e1439",
+      "nombre": "Rodilleras Pro-Tech V2",
+      "precio": 25,
+      "origen": "Taiwan",
+      "categoria": "Proteccion",
+      "url": "/imagenes/rodilleras.png"
+    },
+    {
+      "id": "76e6dad8-2f2a-4265-8fb5-54cf4aeb770c",
+      "nombre": "Balón Molten V5M5000",
+      "precio": 65,
+      "origen": "Japon",
+      "categoria": "Balones",
+      "url": "/imagenes/molten.webp"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "nombre": "Zapatillas Asics Sky Elite FF 2",
+      "precio": 150,
+      "origen": "Vietnam",
+      "categoria": "Calzado",
+      "url": "/imagenes/AsicsSkyElite.jpeg"
+    },
+    {
+      "id": "b2c3d4e5-f6a7-4b6c-9d0e-1f2a3b4c5d6e",
+      "nombre": "Manguitos Compresión Mizuno",
+      "precio": 18,
+      "origen": "Tailandia",
+      "categoria": "Proteccion",
+      "url": "/imagenes/Manguitos Compresión Mizuno.jpeg"
+    },
+    {
+      "id": "c3d4e5f6-a7b8-4c7d-0e1f-2a3b4c5d6e7f",
+      "nombre": "Balón Mikasa V200W (Oficial)",
+      "precio": 89,
+      "origen": "Japon",
+      "categoria": "Balones",
+      "url": "/imagenes/Balón Mikasa V200W (Oficial).jpeg"
+    },
+    {
+      "id": "d4e5f6a7-b8c9-4d8e-1f2a-3b4c5d6e7f8a",
+      "nombre": "Camiseta Entrenamiento",
+      "precio": 22,
+      "origen": "España",
+      "categoria": "Ropa",
+      "url": "/imagenes/Camiseta Entrenamiento Transpirable.jpeg"
+    },
+    {
+      "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
+      "nombre": "Pantalón Corto Competición",
+      "precio": 30,
+      "origen": "Portugal",
+      "categoria": "Ropa",
+      "url": "/imagenes/Pantalón Corto Competición.jpeg"
+    },
+    {
+      "id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
+      "nombre": "Zapatillas Mizuno Wave Lightning Z7",
+      "precio": 140,
+      "origen": "Vietnam",
+      "categoria": "Calzado",
+      "url": "/imagenes/Zapatillas Mizuno Wave Lightning Z7.jpeg"
+    },
+    {
+      "id": "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+      "nombre": "Red de Voley Profesional",
+      "precio": 120,
+      "origen": "Brasil",
+      "categoria": "Accesorios",
+      "url": "/imagenes/Red de Voley Profesional.jpeg"
+    },
+    {
+      "id": "1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e",
+      "nombre": "Antenas de Red (Par)",
+      "precio": 45,
+      "origen": "China",
+      "categoria": "Accesorios",
+      "url": "/imagenes/Antenas de Red (Par).jpeg"
+    },
+    {
+      "id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
+      "nombre": "Tobillera Estabilizadora",
+      "precio": 35,
+      "origen": "USA",
+      "categoria": "Proteccion",
+      "url": "/imagenes/Tobillera Estabilizadora.jpeg"
+    },
+    {
+      "id": "3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a",
+      "nombre": "Balón Mikasa V300W",
+      "precio": 55,
+      "origen": "India",
+      "categoria": "Balones",
+      "url": "/public/imagenes/Balón Mikasa V300W.jpeg"
+    },
+    {
+      "id": "4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9b",
+      "nombre": "Calcetines Técnicos (3 Pares)",
+      "precio": 15,
+      "origen": "España",
+      "categoria": "Ropa",
+      "url": "/imagenes/Calcetines Técnicos (3 Pares).jpeg"
+    },
+    {
+      "id": "6a7b8c9d-0e1f-2a3b-4c5d-6e7f8a9b0c1d",
+      "nombre": "Zapatillas Adidas Crazyflight",
+      "precio": 130,
+      "origen": "Indonesia",
+      "categoria": "Calzado",
+      "url": "/imagenes/Zapatillas Adidas Crazyflight.jpeg"
+    },
+    {
+      "id": "7b8c9d0e-1f2a-3b4c-5d6e-7f8a9b0c1d2e",
+      "nombre": "Rodilleras Mizuno LR6",
+      "precio": 28,
+      "origen": "China",
+      "categoria": "Proteccion",
+      "url": "/imagenes/Rodilleras Mizuno LR6.jpeg"
+    },
+    {
+      "id": "8c9d0e1f-2a3b-4c5d-6e7f-8a9b0c1d2e3f",
+      "nombre": "Sudadera 'Voley Spirit'",
+      "precio": 45,
+      "origen": "Portugal",
+      "categoria": "Ropa",
+      "url": "/imagenes/Sudadera 'Voley Spirit'.jpeg"
+    },
+    {
+      "id": "9d0e1f2a-3b4c-5d6e-7f8a-9b0c1d2e3f4a",
+      "nombre": "Pizarra Táctica Entrenador",
+      "precio": 20,
+      "origen": "España",
+      "categoria": "Accesorios",
+      "url": "/imagenes/Pizarra Táctica Entrenador.jpeg"
+    },
+    {
+      "id": "b1c2d3e4-f5a6-7b8c-9d0e-1f2a3b4c5d6e",
+      "nombre": "Cinta de Kinesiología",
+      "precio": 12,
+      "origen": "Corea",
+      "categoria": "Proteccion",
+      "url": "/imagenes/Cinta de Kinesiología.jpeg"
+    },
+    {
+      "id": "c2d3e4f5-a6b7-8c9d-0e1f-2a3b4c5d6e7f",
+      "nombre": "Bolsa de Red para 10 Balones",
+      "precio": 15,
+      "origen": "China",
+      "categoria": "Accesorios",
+      "url": "/imagenes/Bolsa de Red para 10 Balones.jpeg"
+    },
+    {
+      "id": "d3e4f5a6-b7c8-9d0e-1f2a-3b4c5d6e7f8a",
+      "nombre": "Muñequeras Absorbentes",
+      "precio": 8,
+      "origen": "España",
+      "categoria": "Ropa",
+      "url": "/imagenes/Muñequeras Absorbentes.jpeg"
+    },
+    {
+      "id": "e4f5a6b7-c8d9-0e1f-2a3b-4c5d6e7f8a9b",
+      "nombre": "Zapatillas Asics Gel-Rocket 10",
+      "precio": 75,
+      "origen": "Indonesia",
+      "categoria": "Calzado",
+      "url": "/imagenes/Zapatillas Asics Gel-Rocket 10.webp"
+    },
+    {
+      "id": "f5a6b7c8-d9e0-1f2a-3b4c-5d6e7f8a9b0c",
+      "nombre": "Gafas Voley Playa",
+      "precio": 50,
+      "origen": "Italia",
+      "categoria": "Accesorios",
+      "url": "/imagenes/Gafas Voley Playa.jpeg"
+    },
+    {
+      "id": "0f1a2b3c-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+      "nombre": "Balón Wilson 'Castaway'",
+      "precio": 35,
+      "origen": "USA",
+      "categoria": "Balones",
+      "url": "/imagenes/Balón Wilson 'Castaway'.jpeg"
+    },
+    {
+      "id": "1f2a3b4c-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
+      "nombre": "Marcador de Puntos Manual",
+      "precio": 25,
+      "origen": "España",
+      "categoria": "Accesorios",
+      "url": "/imagenes/Marcador de Puntos Manual.jpeg"
+    },
+    {
+      "id": "2f3a4b5c-6d7e-8f9a-0b1c-2d3e4f5a6b7c",
+      "nombre": "Pantalón Térmico Mujer",
+      "precio": 22,
+      "origen": "Portugal",
+      "categoria": "Ropa",
+      "url": "/imagenes/Pantalón Térmico Mujer.jpeg"
+    },
+    {
+      "id": "3f4a5b6c-7d8e-9f0a-1b2c-3d4e5f6a7b8c",
+      "nombre": "Protector Dental Voley",
+      "precio": 10,
+      "origen": "Taiwan",
+      "categoria": "Proteccion",
+      "url": "/imagenes/Protector Dental Voley.jpeg"
+    },
+    {
+      "id": "4f5a6b7c-8d9e-0f1a-2b3c-4d5e6f7a8b9c",
+      "nombre": "Kit Inflado de Balones",
+      "precio": 12,
+      "origen": "China",
+      "categoria": "Accesorios",
+      "url": "/imagenes/Kit Inflado de Balones.jpeg"
+    },
+    {
+      "id": "5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0c",
+      "nombre": "Top Deportivo Competición",
+      "precio": 28,
+      "origen": "España",
+      "categoria": "Ropa",
+      "url": "/imagenes/Top Deportivo.jpeg"
+    }
+  ],
+  "posiciones": [
+    {
+      "id": "1",
+      "rol": "Colocador",
+      "sistema": "5-1",
+      "rotacion": "R1",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero / Defensa"
+    },
+    {
+      "id": "2",
+      "rol": "Opuesto",
+      "sistema": "5-1",
+      "rotacion": "R1",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Atacante Principal"
+    },
+    {
+      "id": "3",
+      "rol": "Central 1",
+      "sistema": "5-1",
+      "rotacion": "R1",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Bloqueo Central"
+    },
+    {
+      "id": "4",
+      "rol": "Punta 2",
+      "sistema": "5-1",
+      "rotacion": "R1",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Atacante/Recepción"
+    },
+    {
+      "id": "5",
+      "rol": "Punta 1",
+      "sistema": "5-1",
+      "rotacion": "R1",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Defensa"
+    },
+    {
+      "id": "6",
+      "rol": "Líbero",
+      "sistema": "5-1",
+      "rotacion": "R1",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Especialista Defensa"
+    },
+    {
+      "id": "7",
+      "rol": "Colocador",
+      "sistema": "5-1",
+      "rotacion": "R2",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "8",
+      "rol": "Opuesto",
+      "sistema": "5-1",
+      "rotacion": "R2",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "9",
+      "rol": "Central 1",
+      "sistema": "5-1",
+      "rotacion": "R2",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "10",
+      "rol": "Punta 2",
+      "sistema": "5-1",
+      "rotacion": "R2",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "11",
+      "rol": "Punta 1",
+      "sistema": "5-1",
+      "rotacion": "R2",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "12",
+      "rol": "Líbero",
+      "sistema": "5-1",
+      "rotacion": "R2",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "13",
+      "rol": "Colocador",
+      "sistema": "5-1",
+      "rotacion": "R3",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "14",
+      "rol": "Opuesto",
+      "sistema": "5-1",
+      "rotacion": "R3",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "15",
+      "rol": "Líbero",
+      "sistema": "5-1",
+      "rotacion": "R3",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "16",
+      "rol": "Punta 2",
+      "sistema": "5-1",
+      "rotacion": "R3",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "17",
+      "rol": "Punta 1",
+      "sistema": "5-1",
+      "rotacion": "R3",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "18",
+      "rol": "Central 1",
+      "sistema": "5-1",
+      "rotacion": "R3",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "19",
+      "rol": "Colocador",
+      "sistema": "5-1",
+      "rotacion": "R4",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "20",
+      "rol": "Opuesto",
+      "sistema": "5-1",
+      "rotacion": "R4",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "21",
+      "rol": "Líbero",
+      "sistema": "5-1",
+      "rotacion": "R4",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "22",
+      "rol": "Punta 2",
+      "sistema": "5-1",
+      "rotacion": "R4",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "23",
+      "rol": "Punta 1",
+      "sistema": "5-1",
+      "rotacion": "R4",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "24",
+      "rol": "Central 1",
+      "sistema": "5-1",
+      "rotacion": "R4",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "25",
+      "rol": "Colocador",
+      "sistema": "5-1",
+      "rotacion": "R5",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "26",
+      "rol": "Líbero",
+      "sistema": "5-1",
+      "rotacion": "R5",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "27",
+      "rol": "Central 1",
+      "sistema": "5-1",
+      "rotacion": "R5",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "28",
+      "rol": "Punta 2",
+      "sistema": "5-1",
+      "rotacion": "R5",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "29",
+      "rol": "Punta 1",
+      "sistema": "5-1",
+      "rotacion": "R5",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "30",
+      "rol": "Central 1",
+      "sistema": "5-1",
+      "rotacion": "R5",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "31",
+      "rol": "Colocador",
+      "sistema": "5-1",
+      "rotacion": "R6",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "32",
+      "rol": "Opuesto",
+      "sistema": "5-1",
+      "rotacion": "R6",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "33",
+      "rol": "Central 1",
+      "sistema": "5-1",
+      "rotacion": "R6",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "34",
+      "rol": "Punta 2",
+      "sistema": "5-1",
+      "rotacion": "R6",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "35",
+      "rol": "Líbero",
+      "sistema": "5-1",
+      "rotacion": "R6",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "36",
+      "rol": "Líbero",
+      "sistema": "5-1",
+      "rotacion": "R6",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "37",
+      "rol": "Colocador 1",
+      "sistema": "4-2",
+      "rotacion": "R1",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "38",
+      "rol": "Colocador 2",
+      "sistema": "4-2",
+      "rotacion": "R1",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "39",
+      "rol": "Punta 1",
+      "sistema": "4-2",
+      "rotacion": "R1",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "40",
+      "rol": "Punta 2",
+      "sistema": "4-2",
+      "rotacion": "R1",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "41",
+      "rol": "Central 1",
+      "sistema": "4-2",
+      "rotacion": "R1",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "42",
+      "rol": "Líbero",
+      "sistema": "4-2",
+      "rotacion": "R1",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "43",
+      "rol": "Colocador 1",
+      "sistema": "4-2",
+      "rotacion": "R2",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "44",
+      "rol": "Colocador 2",
+      "sistema": "4-2",
+      "rotacion": "R2",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "45",
+      "rol": "Punta 1",
+      "sistema": "4-2",
+      "rotacion": "R2",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "46",
+      "rol": "Punta 2",
+      "sistema": "4-2",
+      "rotacion": "R2",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "47",
+      "rol": "Central 1",
+      "sistema": "4-2",
+      "rotacion": "R2",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "48",
+      "rol": "Líbero",
+      "sistema": "4-2",
+      "rotacion": "R2",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "49",
+      "rol": "Líbero",
+      "sistema": "4-2",
+      "rotacion": "R3",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "50",
+      "rol": "Colocador 2",
+      "sistema": "4-2",
+      "rotacion": "R3",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "51",
+      "rol": "Punta 1",
+      "sistema": "4-2",
+      "rotacion": "R3",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "52",
+      "rol": "Punta 2",
+      "sistema": "4-2",
+      "rotacion": "R3",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "53",
+      "rol": "Líbero",
+      "sistema": "4-2",
+      "rotacion": "R3",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "54",
+      "rol": "Colocador 1",
+      "sistema": "4-2",
+      "rotacion": "R3",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "55",
+      "rol": "Colocador 1",
+      "sistema": "4-2",
+      "rotacion": "R4",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "56",
+      "rol": "Colocador 2",
+      "sistema": "4-2",
+      "rotacion": "R4",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "57",
+      "rol": "Punta 1",
+      "sistema": "4-2",
+      "rotacion": "R4",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "58",
+      "rol": "Punta 2",
+      "sistema": "4-2",
+      "rotacion": "R4",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "59",
+      "rol": "Líbero",
+      "sistema": "4-2",
+      "rotacion": "R4",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "60",
+      "rol": "Central 1",
+      "sistema": "4-2",
+      "rotacion": "R4",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "61",
+      "rol": "Central 1",
+      "sistema": "4-2",
+      "rotacion": "R5",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "62",
+      "rol": "Colocador 2",
+      "sistema": "4-2",
+      "rotacion": "R5",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "63",
+      "rol": "Líbero",
+      "sistema": "4-2",
+      "rotacion": "R5",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "64",
+      "rol": "Punta 2",
+      "sistema": "4-2",
+      "rotacion": "R5",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    },
+    {
+      "id": "65",
+      "rol": "Colocador 1",
+      "sistema": "4-2",
+      "rotacion": "R5",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "66",
+      "rol": "Central 2",
+      "sistema": "4-2",
+      "rotacion": "R5",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "67",
+      "rol": "Central 2",
+      "sistema": "4-2",
+      "rotacion": "R6",
+      "top": "10%",
+      "left": "40%",
+      "titulo": "POS 3",
+      "desc": "Delantero"
+    },
+    {
+      "id": "68",
+      "rol": "Líbero",
+      "sistema": "4-2",
+      "rotacion": "R6",
+      "top": "75%",
+      "left": "40%",
+      "titulo": "POS 6",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "69",
+      "rol": "Colocador 2",
+      "sistema": "4-2",
+      "rotacion": "R6",
+      "top": "65%",
+      "left": "15%",
+      "titulo": "POS 5",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "70",
+      "rol": "Punta 2",
+      "sistema": "4-2",
+      "rotacion": "R6",
+      "top": "70%",
+      "left": "65%",
+      "titulo": "POS 1",
+      "desc": "Zaguero"
+    },
+    {
+      "id": "71",
+      "rol": "Central 1",
+      "sistema": "4-2",
+      "rotacion": "R6",
+      "top": "15%",
+      "left": "15%",
+      "titulo": "POS 4",
+      "desc": "Delantero"
+    },
+    {
+      "id": "72",
+      "rol": "Colocador 1",
+      "sistema": "4-2",
+      "rotacion": "R6",
+      "top": "15%",
+      "left": "65%",
+      "titulo": "POS 2",
+      "desc": "Delantero"
+    }
+  ]
+}
