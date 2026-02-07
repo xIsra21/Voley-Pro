@@ -115,61 +115,67 @@
     background: #f1a90f;
     transform: scale(1.1);
 }
+/* ... (Mantén tu código anterior igual hasta llegar a las media queries) ... */
 
-/* --- AJUSTES EXTRA PARA RESPONSIVE (Añadir al final) --- */
+/* --- AJUSTES EXTRA PARA RESPONSIVE CORREGIDOS --- */
 
 @media (max-width: 768px) {
     .autor-page {
-        margin-top: 80px; /* Reducimos margen superior para el menú móvil */
+        margin-top: 80px;
+        padding: 20px 5%; /* Reducimos padding lateral para dar aire */
         gap: 25px;
+        align-items: center; /* Asegura que los hijos se alineen al centro */
     }
 
     .autor-card-principal {
         padding: 25px 15px;
-        /* Reducimos la sombra para que no "empuje" la card fuera del viewport */
         box-shadow: 8px 8px 0px #000; 
-        width: 95%;
+        width: 100%;
+        max-width: 90%; /* Evita que choque con los bordes */
+        margin: 0 auto; /* Centrado horizontal */
     }
 
     .autor-card-principal h1 {
-        font-size: 2.2rem; /* Un poco más grande que tu media query original pero controlado */
-    }
-
-    .autor-avatar {
-        width: 120px;
-        height: 120px;
+        font-size: 2.2rem;
     }
 
     .info-grid {
-        /* Bajamos el minmax para que las tarjetas no se vean obligadas a ser muy anchas */
         grid-template-columns: 1fr; 
         gap: 20px;
+        width: 100%;
+        max-width: 90%; /* Alineado con la card principal */
+        margin: 0 auto;
     }
 
     .info-card {
-        box-shadow: 6px 6px 0px #e74c3c; /* Sombra más discreta en móvil */
+        box-shadow: 6px 6px 0px #e74c3c;
+        margin: 0 auto;
+        width: 100%;
     }
 }
 
 @media (max-width: 480px) {
+    .autor-page {
+        padding: 20px 10px; /* Espacio mínimo para que no toque el borde del móvil */
+    }
+
+    .autor-card-principal {
+        /* Bajamos la sombra al mínimo para evitar el desbordamiento derecho */
+        box-shadow: 5px 5px 0px #000;
+        width: calc(100% - 10px); /* Restamos el tamaño de la sombra */
+    }
+
     .autor-card-principal h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
-    .autor-tagline {
-        font-size: 0.9rem;
-        padding: 4px 10px;
+    .info-card {
+        /* Restamos el tamaño de la sombra para que no se salga por la derecha */
+        width: calc(100% - 8px); 
+        box-shadow: 5px 5px 0px #e74c3c;
     }
 
-    /* Evitamos que las etiquetas tecnológicas se rompan visualmente */
-    .tech-tags span {
-        padding: 4px 8px;
-        font-size: 0.75rem;
-        box-shadow: 2px 2px 0px #000;
-    }
-
-    /* Ajuste para que la sombra no cause scroll horizontal */
-    .autor-card-principal, .info-card {
-        margin-right: 10px; 
+    .tech-tags {
+        justify-content: center; /* Centramos las etiquetas en móviles pequeños */
     }
 }
