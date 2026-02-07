@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import '../estilos/links.css'
 import { useAuth } from '../servicios/context/AuthContext';
 import { useState, useEffect } from 'react';
-import { supabase } from '../../lib/supabase';
+import { supabase } from '../lib/supabase';
 
 function Links() {
     const { user } = useAuth();
