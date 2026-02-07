@@ -1,37 +1,52 @@
 import { Link } from "react-router-dom"
 import '../estilos/links.css'
 import { useAuth } from '../servicios/context/AuthContext';
+import { useState, useEffect } from 'react';
+import { supabase } from '../../lib/supabase';
 
 function Links() {
-  // Extraemos el usuario y el rol desde el AuthContext
-  const { user, role } = useAuth(); 
+    const { user } = useAuth();
+    const [esAdmin, setEsAdmin] = useState(false);
 
-  // Definimos los enlaces con una propiedad de seguridad
-  const menuItems = [
-    { nombre: "Inicio", ruta: "/", requiereAdmin: false },
-    { nombre: "Tienda", ruta: "/tienda", requiereAdmin: false },
-    { nombre: "Sistema", ruta: "/sistema", requiereAdmin: false },
-    { nombre: "Autor", ruta: "/autor", requiereAdmin: false },
-    { nombre: "Admin", ruta: "/admin", requiereAdmin: true },
-  ];
+    // Verificamos el rol de la misma forma que en el componente Admin
+    useEffect(() => {
+        async function verificarRol() {
+            if (user) {
+                try {
+                    const { data, error } = await supabase
+                        .from('profiles')
+                        .select('role')
+                        .eq('id', user.id)
+                        .single();
 
-  return (
-    <nav className="nav">
-      {menuItems.map((item) => {
-        // Lógica de visualización condicional:
-        // 1. Si no requiere admin, se muestra siempre.
-        // 2. Si requiere admin, solo se muestra si el usuario existe y su rol es 'admin'.
-        if (!item.requiereAdmin || (user && role === 'admin')) {
-          return (
-            <Link key={item.nombre} className="nav-link" to={item.ruta}>
-              {item.nombre}
-            </Link>
-          );
+                    if (!error && data?.role === 'admin') {
+                        setEsAdmin(true);
+                    } else {
+                        setEsAdmin(false);
+                    }
+                } catch (err) {
+                    setEsAdmin(false);
+                }
+            } else {
+                setEsAdmin(false);
+            }
         }
-        return null;
-      })}
-    </nav>
-  );
+        verificarRol();
+    }, [user]);
+
+    return (
+        <nav className="nav">
+            <Link className="nav-link" to="/">Inicio</Link>
+            <Link className="nav-link" to="/tienda">Tienda</Link>
+            <Link className="nav-link" to="/sistema">Sistema</Link>
+            <Link className="nav-link" to="/autor">Autor</Link>
+            
+            {/* Solo mostramos Admin si la verificación manual da true */}
+            {esAdmin && (
+                <Link className="nav-link" to="/admin">Admin</Link>
+            )}
+        </nav>
+    )
 }
 
 export default Links;
