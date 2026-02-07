@@ -27,8 +27,9 @@ const Autor = () => {
             <p className="autor-tagline">Desarrollador Full Stack | Amante del Voleibol</p>
 
         <div className="autor-details">
-            <p><strong>Email:</strong> israelroyanooro@gmail.com</p>
-            <p><strong>Último acceso:</strong> {fechaSesion}</p>
+            <p><strong>Soy Israel Royano Oro, estudiante en prácticas de DAW, enfocado en el desarrollo de aplicaciones web con un estilo visual Neo-brutalista. 
+                En mi proyecto Voley-Pro, he integrado un stack profesional basado en React 18 y Supabase, implementando una lógica de persistencia híbrida (LocalStorage y PostgreSQL) 
+                que garantiza un carrito de compras funcional y seguro, tanto para invitados como para usuarios autenticados.</strong></p>
         </div>
         </motion.div>
     </section>
