@@ -83,7 +83,7 @@
     color: #666;
 }
 
-img {
+.producto-img-frame > img {
     width: 100%;
     height: 500px;
 }
