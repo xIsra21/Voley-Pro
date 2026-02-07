@@ -70,43 +70,21 @@
 
 @media (max-width: 768px) {
     .nav {
-        flex-direction: column; /* Apilamos logo/enlaces en vertical */
-        align-items: center;
-        gap: 12px;
-        padding: 20px 10px;
-        background: rgba(0, 0, 0, 0.9); /* Fondo sólido para legibilidad */
+        display: flex !important;
+        flex-direction: row !important; /* Fuerza horizontal */
+        flex-wrap: nowrap !important;   /* Prohibido bajar a otra línea */
+        justify-content: center;
+        gap: 4px; /* Espacio mínimo entre palabras */
+        width: 100%;
     }
 
     .nav-link {
-        font-size: 16px;
-        padding: 10px 20px;
-        width: 80%; /* Enlaces más anchos para facilitar el clic */
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-link:hover {
-        transform: none; /* Quitamos el salto en móvil para evitar bugs visuales */
-        background: rgba(255, 0, 0, 0.2);
-    }
-
-    /* Contenedor de Auth (Bienvenido + Botones) */
-    .nav span, .nav button, .nav > a:not(.nav-link) {
-        width: 90%;
-        text-align: center;
-        margin: 5px 0;
-    }
-
-    .nav > a:not(.nav-link) {
-        order: -1; /* Opcional: pone el botón de Login arriba de todo */
-        font-size: 15px;
-        padding: 12px;
-    }
-
-    .nav button {
-        border-color: #ff3333;
-        padding: 12px;
-        font-weight: 700;
+        font-size: 0.6rem !important; /* Fuente pequeña para que quepan todos */
+        padding: 4px 2px !important;
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: -0.2px;
+        white-space: nowrap; /* Evita que "Inicio" se parta, por ejemplo */
     }
 }
 

@@ -309,13 +309,13 @@
     .menu-center-group { 
         flex: 1; 
         justify-content: center; 
-        gap: 4px;
+        gap: 2px;
         flex-wrap: nowrap !important; 
     }
 
     /* REDUCCIÓN DE ESCALA PARA BOTONES CENTRALES */
     .menu-center-group a {
-        font-size: 0.55rem !important; /* Tamaño mini pero legible */
+        font-size: 0.53rem !important; /* Tamaño mini pero legible */
         padding: 4px 5px !important;
         border-width: 1.5px !important;
         box-shadow: 2px 2px 0px #000 !important;
