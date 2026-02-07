@@ -277,72 +277,86 @@
 
 /* --- FIX: MENÚ SIEMPRE HORIZONTAL --- */
 
+/* --- MANTENER DISEÑO PC EN MÓVIL (ESCALA MINI) --- */
+
 @media (max-width: 768px) {
     .menu {
-        height: 70px; /* Altura fija y delgada */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 15px;
-        flex-wrap: nowrap; /* Prohibimos que los elementos bajen */
-        gap: 10px;
+        height: 65px; /* Altura más compacta */
+        padding: 0 2%; /* Menos margen lateral */
+        gap: 5px; /* Espacio mínimo entre bloques */
     }
 
-    /* 1. Bloque izquierdo y derecho más pequeños */
+    /* Reducimos la importancia de los bloques laterales para dar aire al centro */
     .menu-left, .menu-right {
-        flex: 0 0 auto; 
+        flex: 1; 
     }
 
-    .pelota {
-        width: 35px;
-        height: 35px;
-    }
-
-    /* 2. EL TRUCO: Scroll horizontal para los links centrales */
     .menu-center-group {
-        flex: 1; /* Ocupa el espacio sobrante en el centro */
-        display: flex;
-        justify-content: flex-start; /* Alinea al inicio para permitir scroll */
-        gap: 8px;
-        overflow-x: auto; /* Habilita el movimiento lateral */
-        white-space: nowrap; /* Evita que el texto salte de línea */
-        padding: 5px 0;
-        
-        /* Ocultamos la barra de scroll para que se vea limpio */
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
+        flex: 3; /* El centro toma la prioridad */
+        gap: 4px; /* Espacio mínimo entre botones */
     }
 
-    .menu-center-group::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+    /* PELOTA (LOGO) */
+    .pelota {
+        width: 30px;
+        height: 30px;
+        filter: drop-shadow(2px 2px 0px #000);
     }
 
-    /* 3. Estilo de los links más compacto */
+    .badge-count {
+        min-width: 14px;
+        height: 14px;
+        font-size: 0.6rem;
+    }
+
+    /* BOTONES CENTRALES MINI */
     .menu-center-group a {
-        font-size: 0.7rem;
-        padding: 6px 10px;
-        border-width: 2px;
-        text-transform: uppercase;
-        flex-shrink: 0; /* Evita que los links se aplasten */
+        font-size: 0.6rem; /* Fuente muy pequeña pero legible en negrita */
+        padding: 4px 6px;
+        border-width: 1.5px;
+        letter-spacing: 0;
+        box-shadow: 2px 2px 0px #000;
     }
 
-    /* 4. Botón de Login/Usuario minimalista */
-    .menu-right > a, .user-menu-container {
-        font-size: 0.65rem;
-        padding: 6px 10px;
+    .menu-center-group a:hover {
+        transform: none; /* Quitamos desplazamientos para evitar saltos de línea */
+        box-shadow: 2px 2px 0px #000;
+    }
+
+    /* BLOQUE DERECHO (USUARIO/LOGIN) */
+    .menu-right > a, 
+    .user-menu-container {
+        font-size: 0.6rem;
+        padding: 5px 8px;
+        border-width: 2px;
         box-shadow: 2px 2px 0px #e74c3c;
+        white-space: nowrap; /* Evita que el nombre de usuario se parta */
     }
 
     .avatar-trigger {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
+        border-width: 2px;
+    }
+
+    /* CARRITO DESPLEGABLE */
+    .carrito-dropdown {
+        width: 300px;
+        top: 69px;
+        left: 5%;
+        padding: 15px;
+        box-shadow: 8px 8px 0px #000;
     }
 }
 
-@media (max-width: 400px) {
-    /* En pantallas mini, quitamos texto innecesario o reducimos más */
+/* AJUSTE EXTREMO PARA MÓVILES MUY PEQUEÑOS (iPhone SE, etc) */
+@media (max-width: 380px) {
     .menu-center-group a {
-        font-size: 0.65rem;
-        padding: 5px;
+        font-size: 0.55rem;
+        padding: 3px 5px;
+    }
+    
+    .menu-right > a {
+        padding: 4px 6px;
     }
 }
