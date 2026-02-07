@@ -118,21 +118,29 @@
 /* ... (Mantén tu código anterior igual hasta llegar a las media queries) ... */
 
 /* --- AJUSTES EXTRA PARA RESPONSIVE CORREGIDOS --- */
+/* --- AJUSTES RESPONSIVE TOTALMENTE CENTRADOS --- */
+
+@media (max-width: 1024px) {
+    .autor-page {
+        padding: 40px 5%;
+    }
+}
 
 @media (max-width: 768px) {
     .autor-page {
         margin-top: 80px;
-        padding: 20px 5%; /* Reducimos padding lateral para dar aire */
-        gap: 25px;
-        align-items: center; /* Asegura que los hijos se alineen al centro */
+        padding: 20px 15px;
+        align-items: center; /* Centra todo el contenido hijo */
+        overflow-x: hidden; /* Evita scroll lateral por sombras */
     }
 
     .autor-card-principal {
-        padding: 25px 15px;
-        box-shadow: 8px 8px 0px #000; 
+        padding: 30px 20px;
         width: 100%;
-        max-width: 90%; /* Evita que choque con los bordes */
-        margin: 0 auto; /* Centrado horizontal */
+        /* Ajustamos el ancho restando el tamaño de la sombra para que no desborde */
+        max-width: calc(100% - 15px); 
+        box-shadow: 10px 10px 0px #000;
+        margin: 0 auto;
     }
 
     .autor-card-principal h1 {
@@ -140,42 +148,45 @@
     }
 
     .info-grid {
-        grid-template-columns: 1fr; 
-        gap: 20px;
+        grid-template-columns: 1fr; /* Una columna para que nada se amontone */
         width: 100%;
-        max-width: 90%; /* Alineado con la card principal */
+        max-width: calc(100% - 15px);
         margin: 0 auto;
+        gap: 25px;
     }
 
     .info-card {
-        box-shadow: 6px 6px 0px #e74c3c;
-        margin: 0 auto;
         width: 100%;
+        box-shadow: 8px 8px 0px #e74c3c;
     }
 }
 
 @media (max-width: 480px) {
-    .autor-page {
-        padding: 20px 10px; /* Espacio mínimo para que no toque el borde del móvil */
-    }
-
-    .autor-card-principal {
-        /* Bajamos la sombra al mínimo para evitar el desbordamiento derecho */
-        box-shadow: 5px 5px 0px #000;
-        width: calc(100% - 10px); /* Restamos el tamaño de la sombra */
-    }
-
     .autor-card-principal h1 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
 
+    .autor-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .autor-card-principal, .info-card {
+        /* Sombras más pequeñas en móviles muy estrechos para mayor estabilidad */
+        box-shadow: 6px 6px 0px #000;
+        max-width: calc(100% - 8px);
+    }
+    
     .info-card {
-        /* Restamos el tamaño de la sombra para que no se salga por la derecha */
-        width: calc(100% - 100px);
-        box-shadow: 5px 5px 0px #e74c3c;
+        box-shadow: 6px 6px 0px #e74c3c;
     }
 
     .tech-tags {
-        justify-content: center; /* Centramos las etiquetas en móviles pequeños */
+        justify-content: center; /* Centra las etiquetas tecnológicas */
+    }
+
+    .tech-tags span {
+        font-size: 0.7rem;
+        padding: 4px 8px;
     }
 }
