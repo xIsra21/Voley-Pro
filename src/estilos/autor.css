@@ -120,12 +120,6 @@
 /* --- AJUSTES EXTRA PARA RESPONSIVE CORREGIDOS --- */
 /* --- AJUSTES RESPONSIVE TOTALMENTE CENTRADOS --- */
 
-@media (max-width: 1024px) {
-    .autor-page {
-        padding: 40px 5%;
-    }
-}
-
 @media (max-width: 768px) {
     .autor-page {
         margin-top: 80px;
@@ -156,7 +150,7 @@
     }
 
     .info-card {
-        width: 80%;
+        width: 90%;
         box-shadow: 8px 8px 0px #e74c3c;
     }
 }
@@ -178,7 +172,7 @@
     }
     
     .info-card {
-        width: 60%;
+        width: 65%;
         box-shadow: 6px 6px 0px #e74c3c;
     }
 
