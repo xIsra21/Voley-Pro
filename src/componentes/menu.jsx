@@ -2,16 +2,16 @@ import '../estilos/menu.css'
 import { useAuth } from '../servicios/context/AuthContext';
 import Links from './links'
 import { Link } from "react-router-dom"
-import { useState, memo } from "react";
+import { useState, memo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from '../servicios/context/CartContext';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { CarritoPdf } from './carritoPdf';
 import { toast } from "react-toastify";
 import UserMenu from './UserMenu';
-import { supabase } from '../lib/supabase'; // IMPORTANTE: Verifica esta ruta
+import { supabase } from '../lib/supabase';
 
-// Componente Interno del Botón PDF
+// Componente del Botón con validación de función
 export const BotonPDFCheckout = memo(({ productos, total, onFinalizar }) => (
   <PDFDownloadLink
     document={<CarritoPdf productos={productos} total={total} />}
@@ -20,17 +20,15 @@ export const BotonPDFCheckout = memo(({ productos, total, onFinalizar }) => (
     {({ loading }) => (
       <button 
         className="checkout-btn" 
-        disabled={loading || productos.length === 0}
+        disabled={loading || !productos || productos.length === 0}
         onClick={() => {
-            // Verificamos que onFinalizar sea realmente una función antes de llamarla
+            // Verificación crítica: solo ejecuta si onFinalizar es realmente una función
             if(!loading && typeof onFinalizar === 'function') {
                 onFinalizar();
-            } else {
-                console.warn("La función onFinalizar no está disponible.");
             }
         }}
       >
-        {loading ? 'Generando PDF...' : 'Finalizar Compra'}
+        {loading ? 'Preparando PDF...' : 'Finalizar Compra'}
       </button>
     )}
   </PDFDownloadLink>
@@ -41,33 +39,35 @@ function Menu() {
   const { total, productos, setProductos, setTotal, eliminarDelCarrito } = useCart();
   const [carritoVisible, setCarritoVisible] = useState(false);
   
-  const totalUnidades = productos.reduce((acc, p) => acc + p.cantidad, 0);
+  const totalUnidades = productos?.reduce((acc, p) => acc + p.cantidad, 0) || 0;
 
-  // FUNCIÓN PARA VACIAR TODO (DB, LOCAL Y ESTADO)
-  const handleFinalizarCompra = async () => {
-    // Usamos una referencia local para evitar problemas de scope en el setTimeout
+  // Usamos useCallback para mantener la referencia de la función estable
+  const handleFinalizarCompra = useCallback(() => {
+    // Retraso de seguridad para la generación del PDF
     setTimeout(async () => {
       try {
-        if (user && user.id) {
+        // 1. Limpieza en Supabase
+        if (user?.id) {
           await supabase
             .from('carrito')
             .delete()
             .eq('user_id', user.id);
         }
 
+        // 2. Limpieza Local
         localStorage.removeItem('carrito_invitado');
-        
-        // Verificamos que los setters del context existan
-        if(setProductos) setProductos([]);
-        if(setTotal) setTotal(0);
+
+        // 3. Actualización de estado con protección
+        if (typeof setProductos === 'function') setProductos([]);
+        if (typeof setTotal === 'function') setTotal(0);
         
         setCarritoVisible(false);
-        toast.success("¡Pedido finalizado con éxito!");
+        toast.success("¡Compra finalizada y carrito vaciado!");
       } catch (error) {
-        console.error("Error en el proceso de vaciado:", error);
+        console.error("Error al finalizar compra:", error);
       }
-    }, 800);
-  };
+    }, 1000); // 1 segundo de margen para el PDF
+  }, [user, setProductos, setTotal]);
 
   return (
     <div className='menu'>
@@ -103,11 +103,7 @@ function Menu() {
       </div>
 
       <div className="menu-right">
-        {user ? (
-          <UserMenu />
-        ) : (
-          <Link to="/login">Iniciar Sesión</Link>
-        )}
+        {user ? <UserMenu /> : <Link to="/login">Iniciar Sesión</Link>}
       </div>
 
       <AnimatePresence>
@@ -121,7 +117,7 @@ function Menu() {
             <h3>Resumen de Carrito</h3>
             
             <div className="carrito-items">
-              {productos.length === 0 ? (
+              {!productos || productos.length === 0 ? (
                 <p className="empty-msg">El carrito está vacío...</p>
               ) : (
                 productos.map(p => (
@@ -147,7 +143,7 @@ function Menu() {
               )}
             </div>
             
-            {productos.length > 0 && (
+            {productos?.length > 0 && (
               <div className="carrito-totals-bottom">
                 <div className="total-row">
                   <span>Artículos totales:</span>
@@ -155,13 +151,13 @@ function Menu() {
                 </div>
                 <div className="total-row main-total">
                   <span>PRECIO TOTAL:</span>
-                  <strong>{total.toFixed(2)} €</strong>
+                  <strong>{(total || 0).toFixed(2)} €</strong>
                 </div>
                 
                 <BotonPDFCheckout
-                  productos={productos || []} // Evita que productos sea null
-                  total={total || 0}         // Evita que total sea null
-                  onFinalizar={handleFinalizarCompra} // Pasa la función directamente
+                  productos={productos}
+                  total={total}
+                  onFinalizar={handleFinalizarCompra}
                 />
               </div>
             )}
