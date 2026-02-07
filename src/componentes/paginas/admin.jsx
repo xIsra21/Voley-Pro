@@ -70,26 +70,15 @@ function Admin() {
     comprobarAcceso();
   }, [user, authLoading, navigate]);
 
-  // --- EFECTO ORIGINAL CORREGIDO ---
-useEffect(() => {
-  const cargarDatos = async () => {
+  // --- EFECTO ORIGINAL ---
+  useEffect(() => {
+    // Solo cargamos productos si el usuario es admin verificado
     if (autorizado) {
-      try {
-        const response = await servicioProductos.getAll();
-        if (response.data) {
-          setProductos(response.data);
-        }
-      } catch (error) {
-        console.error("Error al conectar con el servidor:", error);
-        // Toast o alerta para saber qué pasa
-        alert("Error de conexión: Verifica las políticas RLS en Supabase");
-      }
+      servicioProductos.getAll()
+        .then((response) => setProductos(response.data))
+        .catch(() => alert("Error al conectar con el servidor"));
     }
-  };
-
-  cargarDatos();
-}, [autorizado]);
-
+  }, [autorizado]);
 
   // --- FUNCIONES ORIGINALES ---
   const limpiarBusqueda = () => {
