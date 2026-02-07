@@ -11,74 +11,85 @@ export const CartProvider = ({ children }) => {
   const [productos, setProductos] = useState([]);
   const [total, setTotal] = useState(0);
 
-  const cargarCarrito = useCallback(async (userId) => {
-    // Solo pedimos columnas que EXISTEN en tu tabla carrito según tu imagen
-    const { data, error } = await supabase
-      .from('carrito')
-      .select('cantidad, datos_producto')
-      .eq('user_id', userId);
-
-    if (error) return console.error("Error DB:", error.message);
-
-    if (data) {
-      // Filtrado de seguridad: si datos_producto es null por algún motivo, lo ignoramos
-      const validos = data
-        .filter(item => item.datos_producto !== null)
-        .map(item => ({
-          producto: item.datos_producto,
-          cantidad: item.cantidad
-        }));
-
-      setProductos(validos);
-      const suma = validos.reduce((acc, p) => acc + (p.producto.precio * p.cantidad), 0);
-      setTotal(suma);
-    }
-  }, []);
-
-  useEffect(() => {
+  // 1. CARGAR CARRITO (Híbrido)
+  const cargarCarrito = useCallback(async () => {
     if (user) {
-      cargarCarrito(user.id);
+      // Si hay usuario, prioridad a Supabase
+      const { data, error } = await supabase
+        .from('carrito')
+        .select('cantidad, datos_producto')
+        .eq('user_id', user.id);
+
+      if (!error && data) {
+        const formateados = data
+          .filter(item => item.datos_producto !== null)
+          .map(item => ({
+            producto: item.datos_producto,
+            cantidad: item.cantidad
+          }));
+        setProductos(formateados);
+      }
     } else {
-      setProductos([]);
-      setTotal(0);
+      // Si no hay usuario, leer de LocalStorage
+      const localCart = localStorage.getItem('carrito_invitado');
+      if (localCart) {
+        setProductos(JSON.parse(localCart));
+      }
     }
+  }, [user]);
+
+  // 2. EFECTO DE SINCRONIZACIÓN Y CÁLCULO DE TOTAL
+  useEffect(() => {
+    cargarCarrito();
   }, [user, cargarCarrito]);
 
-  const addProducto = async (producto) => {
-    if (!user) return toast.info("Inicia sesión para guardar tu carrito");
+  useEffect(() => {
+    // Calcular total cada vez que cambien los productos
+    const suma = productos.reduce((acc, p) => acc + (p.producto.precio * p.cantidad), 0);
+    setTotal(suma);
 
+    // Si no hay usuario, persistir los cambios en LocalStorage
+    if (!user) {
+      localStorage.setItem('carrito_invitado', JSON.stringify(productos));
+    }
+  }, [productos, user]);
+
+  // 3. AÑADIR PRODUCTO
+  const addProducto = async (producto) => {
     const existe = productos.find(p => p.producto.id === producto.id);
     const nuevaCantidad = existe ? existe.cantidad + 1 : 1;
 
-    // Actualización local rápida
-    const nuevos = existe 
+    const nuevosProductos = existe 
       ? productos.map(p => p.producto.id === producto.id ? { ...p, cantidad: nuevaCantidad } : p)
       : [...productos, { producto, cantidad: 1 }];
     
-    setProductos(nuevos);
-    setTotal(prev => prev + producto.precio);
+    setProductos(nuevosProductos);
 
-    // Sincronización con Supabase usando tu columna JSONB
-    await supabase.from('carrito').upsert({
-      user_id: user.id,
-      producto_id: producto.id,
-      cantidad: nuevaCantidad,
-      datos_producto: producto // Guardamos todo el objeto aquí
-    }, { onConflict: 'user_id, producto_id' });
+    // Si el usuario está logueado, sincronizar con Supabase
+    if (user) {
+      await supabase.from('carrito').upsert({
+        user_id: user.id,
+        producto_id: producto.id,
+        cantidad: nuevaCantidad,
+        datos_producto: producto 
+      }, { onConflict: 'user_id, producto_id' });
+    }
 
-    toast.success("Carrito actualizado");
+    toast.success(`${producto.nombre} añadido`);
   };
 
+  // 4. ELIMINAR PRODUCTO
   const eliminarDelCarrito = async (id) => {
-    const item = productos.find(p => p.producto.id === id);
-    if (!item) return;
-
-    setTotal(prev => prev - (item.producto.precio * item.cantidad));
-    setProductos(productos.filter(p => p.producto.id !== id));
+    const nuevosProductos = productos.filter(p => p.producto.id !== id);
+    setProductos(nuevosProductos);
 
     if (user) {
-      await supabase.from('carrito').delete().eq('user_id', user.id).eq('producto_id', id);
+      await supabase.from('carrito')
+        .delete()
+        .eq('user_id', user.id)
+        .eq('producto_id', id);
     }
+    // Si no hay usuario, el useEffect de arriba ya se encarga de actualizar el LocalStorage
   };
 
   return (
