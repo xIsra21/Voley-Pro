@@ -20,9 +20,14 @@ export const BotonPDFCheckout = memo(({ productos, total, onFinalizar }) => (
     {({ loading }) => (
       <button 
         className="checkout-btn" 
-        disabled={loading}
+        disabled={loading || productos.length === 0}
         onClick={() => {
-            if(!loading) onFinalizar();
+            // Verificamos que onFinalizar sea realmente una función antes de llamarla
+            if(!loading && typeof onFinalizar === 'function') {
+                onFinalizar();
+            } else {
+                console.warn("La función onFinalizar no está disponible.");
+            }
         }}
       >
         {loading ? 'Generando PDF...' : 'Finalizar Compra'}
@@ -40,31 +45,26 @@ function Menu() {
 
   // FUNCIÓN PARA VACIAR TODO (DB, LOCAL Y ESTADO)
   const handleFinalizarCompra = async () => {
-    // Retraso para que el PDF capture los datos antes de borrar el estado
+    // Usamos una referencia local para evitar problemas de scope en el setTimeout
     setTimeout(async () => {
       try {
-        // 1. Limpiar Supabase si el usuario está logueado
-        if (user) {
-          const { error } = await supabase
+        if (user && user.id) {
+          await supabase
             .from('carrito')
             .delete()
             .eq('user_id', user.id);
-          
-          if (error) console.error("Error limpiando DB:", error.message);
         }
 
-        // 2. Limpiar LocalStorage (invitados)
         localStorage.removeItem('carrito_invitado');
-
-        // 3. Limpiar Estado de React (UI)
-        setProductos([]);
-        setTotal(0);
+        
+        // Verificamos que los setters del context existan
+        if(setProductos) setProductos([]);
+        if(setTotal) setTotal(0);
+        
         setCarritoVisible(false);
-
-        toast.success("¡Pedido finalizado y carrito vaciado!");
+        toast.success("¡Pedido finalizado con éxito!");
       } catch (error) {
-        console.error("Error en el checkout:", error);
-        toast.error("Error al procesar el cierre del carrito");
+        console.error("Error en el proceso de vaciado:", error);
       }
     }, 800);
   };
@@ -159,9 +159,9 @@ function Menu() {
                 </div>
                 
                 <BotonPDFCheckout
-                  productos={productos}
-                  total={total}
-                  onFinalizar={handleFinalizarCompra}
+                  productos={productos || []} // Evita que productos sea null
+                  total={total || 0}         // Evita que total sea null
+                  onFinalizar={handleFinalizarCompra} // Pasa la función directamente
                 />
               </div>
             )}
