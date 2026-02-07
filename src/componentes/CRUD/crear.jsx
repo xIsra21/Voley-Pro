@@ -58,7 +58,7 @@ function Crear({productos, setProductos, onClose}){
         }
 
     if (!(form.url && 
-      /^\/public\/.+\.(png|jpg|jpeg|gif|webp)$/i.test(form.url))) {
+      /^\/imagenes\/.+\.(png|jpg|jpeg|gif|webp)$/i.test(form.url))) {
         nuevosErrores.url = 'Formato de la url no permitido';
       }
 
