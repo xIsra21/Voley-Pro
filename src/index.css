@@ -96,3 +96,57 @@ body {
     text-transform: uppercase !important;
     box-shadow: 4px 4px 0px #000 !important;
 }
+
+/* --- AJUSTES DE UI GLOBAL PARA MÓVIL --- */
+
+@media (max-width: 768px) {
+    /* 1. Scrollbars en móvil */
+    /* Reducimos el ancho para que no estorben en pantallas pequeñas */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border: none; /* Simplificamos para ahorrar espacio visual */
+    }
+
+    /* 2. SweetAlert2 (Popups Brutalistas) */
+    .brutal-popup {
+        width: 90% !important; /* Que no se pegue a los bordes del móvil */
+        padding: 15px !important;
+        box-shadow: 6px 6px 0px #000 !important; /* Sombra más pequeña */
+        border: 3px solid #000 !important;
+    }
+
+    .brutal-title {
+        font-size: 1.4rem !important;
+    }
+
+    .brutal-content {
+        font-size: 0.9rem !important;
+    }
+
+    /* 3. Botones de Alerta en móvil */
+    .brutal-confirm-btn, .brutal-cancel-btn {
+        padding: 12px !important;
+        font-size: 0.8rem !important;
+        width: 100% !important; /* Botones uno debajo del otro para mejor clic */
+        margin: 5px 0 !important;
+        box-shadow: 3px 3px 0px #000 !important;
+    }
+
+    /* Cambiamos el contenedor de botones de SweetAlert a vertical */
+    .swal2-actions {
+        flex-direction: column !important;
+        width: 100%;
+    }
+}
+
+/* --- OPTIMIZACIÓN DE FONDO --- */
+@media (max-width: 480px) {
+    body {
+        /* Puntos más pequeños en el fondo para que no se vea "ruidoso" en pantallas pequeñas */
+        background-size: 15px 15px;
+    }
+}

@@ -35,3 +35,61 @@ p, span, h1, strong {
 }
 
 /* Ajuste para que las tarjetas de los componentes no sean totalmente opacas */
+
+/* --- AJUSTES GLOBALES RESPONSIVE --- */
+
+html, body {
+    /* Evita el molesto rebote horizontal en móviles */
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.app-main-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Ajuste de padding para que el contenido no quede oculto tras el menú fixed */
+    padding-top: 80px; 
+}
+
+/* --- TOASTIFY (Notificaciones) --- */
+@media (max-width: 768px) {
+    .Toastify__toast-container {
+        width: 90% !important;
+        left: 5% !important;
+        top: 90px !important; /* Justo debajo del menú móvil */
+        margin: 0 auto;
+    }
+
+    .Toastify__toast {
+        min-height: 50px !important;
+        margin-bottom: 10px !important;
+        border: 2px solid #000 !important; /* Mantenemos el look brutalista */
+        box-shadow: 4px 4px 0px #000;
+        font-family: inherit;
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+    }
+}
+
+/* --- CURSORES --- */
+/* En móviles, los cursores personalizados no existen, 
+   pero nos aseguramos de que no interfieran con el scroll táctil */
+@media (pointer: coarse) {
+    p, span, h1, strong, .app-main-wrapper {
+        cursor: auto;
+    }
+}
+
+/* --- ADMIN & AUTOR PANELS --- */
+@media (max-width: 1024px) {
+    .admin-panel, .autor-page {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+    }
+}

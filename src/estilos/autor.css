@@ -116,13 +116,60 @@
     transform: scale(1.1);
 }
 
-/* RESPONSIVE */
+/* --- AJUSTES EXTRA PARA RESPONSIVE (Añadir al final) --- */
+
 @media (max-width: 768px) {
-    .autor-card-principal h1 {
-        font-size: 2rem;
-    }
-    
     .autor-page {
-        padding: 40px 5%;
+        margin-top: 80px; /* Reducimos margen superior para el menú móvil */
+        gap: 25px;
+    }
+
+    .autor-card-principal {
+        padding: 25px 15px;
+        /* Reducimos la sombra para que no "empuje" la card fuera del viewport */
+        box-shadow: 8px 8px 0px #000; 
+        width: 95%;
+    }
+
+    .autor-card-principal h1 {
+        font-size: 2.2rem; /* Un poco más grande que tu media query original pero controlado */
+    }
+
+    .autor-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .info-grid {
+        /* Bajamos el minmax para que las tarjetas no se vean obligadas a ser muy anchas */
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+
+    .info-card {
+        box-shadow: 6px 6px 0px #e74c3c; /* Sombra más discreta en móvil */
+    }
+}
+
+@media (max-width: 480px) {
+    .autor-card-principal h1 {
+        font-size: 1.8rem;
+    }
+
+    .autor-tagline {
+        font-size: 0.9rem;
+        padding: 4px 10px;
+    }
+
+    /* Evitamos que las etiquetas tecnológicas se rompan visualmente */
+    .tech-tags span {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        box-shadow: 2px 2px 0px #000;
+    }
+
+    /* Ajuste para que la sombra no cause scroll horizontal */
+    .autor-card-principal, .info-card {
+        margin-right: 10px; 
     }
 }

@@ -99,3 +99,58 @@
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* --- RESPONSIVE PARA PÁGINA 404 --- */
+
+@media (max-width: 768px) {
+    .p404-container {
+        /* Evitamos el overflow si las pelotas flotan mucho */
+        position: relative;
+        padding: 20px;
+    }
+
+    .p404-card {
+        padding: 30px 20px;
+        box-shadow: 8px 8px 0px #000; /* Sombra reducida */
+        max-width: 100%;
+    }
+
+    .p404-code {
+        font-size: 4.5rem; /* El 404 ahora cabe mejor */
+    }
+
+    .p404-title {
+        font-size: 1.2rem;
+        transform: rotate(0deg); /* Quitamos rotación para evitar cortes en bordes */
+    }
+
+    .volley-ball-float {
+        width: 60px; /* Pelotas más pequeñas para no tapar el texto */
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .p404-code {
+        font-size: 3.5rem;
+    }
+
+    .p404-text {
+        font-size: 0.9rem;
+        margin: 20px 0;
+    }
+
+    .p404-button {
+        padding: 14px;
+        font-size: 0.9rem;
+    }
+
+    /* En móviles muy pequeños, dejamos solo una pelota para no saturar */
+    .ball-1 {
+        top: 5%;
+        left: 5%;
+    }
+    .ball-2 {
+        display: none; 
+    }
+}

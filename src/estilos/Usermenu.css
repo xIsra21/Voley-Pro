@@ -106,3 +106,49 @@
     font-size: 1.1rem;
 }
 
+/* --- AJUSTES RESPONSIVOS PARA USER MENU --- */
+
+@media (max-width: 768px) {
+    /* El dropdown ahora se ajusta mejor al ancho de la pantalla móvil */
+    .user-dropdown {
+        top: 55px;
+        right: -10px; /* Un pequeño ajuste para que la sombra no empuje el borde */
+        width: 190px;
+        box-shadow: 6px 6px 0px #000;
+    }
+
+    .avatar-trigger {
+        width: 40px;
+        height: 40px;
+        box-shadow: 2px 2px 0px #000;
+    }
+
+    .dropdown-nav li {
+        padding: 15px; /* Más área de contacto para el dedo */
+        font-size: 0.8rem;
+    }
+
+    .dropdown-info {
+        padding: 10px;
+    }
+
+    .dropdown-info p {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Si el menú es muy pequeño, podemos hacer que el dropdown sea 
+       casi de ancho completo o centrado */
+    .user-dropdown {
+        position: fixed; /* Lo desanclamos del avatar para centrarlo si es necesario */
+        top: 80px; /* Justo debajo de la barra de navegación */
+        right: 5%;
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .dropdown-nav li {
+        justify-content: center; /* Centramos el texto para mejor estética móvil */
+    }
+}

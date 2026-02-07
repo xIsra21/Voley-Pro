@@ -97,3 +97,64 @@ button.btn-active {
     text-transform: uppercase;
     font-size: 0.8rem;
 }
+
+/* --- RESPONSIVE PARA EL SISTEMA DE ALINEACIÓN --- */
+
+@media (max-width: 1024px) {
+    .sistema-container {
+        flex-direction: column; /* Paneles arriba/abajo, cancha al centro */
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 20px 50px 20px;
+        gap: 30px;
+    }
+
+    .panel-izquierdo, .panel-derecho {
+        flex-direction: row; /* Botones en horizontal para ahorrar espacio */
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .panel-izquierdo button, .panel-derecho button {
+        flex: 1;
+        min-width: 120px;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 500px) {
+    /* ESCALADO DINÁMICO DE LA CANCHA */
+    /* Usamos zoom o transform para que la cancha de 400px quepa en un móvil de 320px */
+    .cancha-espacio {
+        padding: 10px;
+        box-shadow: 8px 8px 0px #000;
+        transform: scale(0.8); /* Encogemos la cancha un 20% */
+        transform-origin: center top;
+        margin-bottom: -100px; /* Compensamos el espacio vacío que deja el scale */
+    }
+
+    .pista-voley {
+        width: 320px; /* Ajuste manual para móviles pequeños */
+        height: 440px;
+    }
+
+    /* Ajustamos las fichas de los jugadores para que no se vean gigantes */
+    .ficha-jugador {
+        width: 80px;
+        box-shadow: 3px 3px 0px #000;
+    }
+
+    .ficha-body {
+        font-size: 0.65rem;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 360px) {
+    .cancha-espacio {
+        transform: scale(0.7); /* Para móviles ultra pequeños */
+        margin-bottom: -150px;
+    }
+}

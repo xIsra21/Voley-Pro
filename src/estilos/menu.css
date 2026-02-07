@@ -259,3 +259,75 @@
 .carrito-items::-webkit-scrollbar-thumb {
     background: #000;
 }
+
+/* --- RESPONSIVE PARA EL MENÚ --- */
+
+@media (max-width: 992px) {
+    .menu-center-group {
+        gap: 5px;
+    }
+    
+    .menu-center-group a {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu {
+        height: auto;
+        padding: 10px 5%;
+        flex-wrap: wrap; /* Permite que el contenido baje si no cabe */
+    }
+
+    .menu-left {
+        flex: 0 0 auto; /* No crece, se queda a la izquierda */
+    }
+
+    .menu-right {
+        flex: 0 0 auto; /* Se queda a la derecha */
+    }
+
+    .menu-center-group {
+        flex: 0 0 100%; /* Ocupa todo el ancho abajo */
+        order: 3; /* Lo manda al final */
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed #000;
+        justify-content: space-around;
+    }
+
+    .menu-center-group a {
+        font-size: 0.75rem;
+        padding: 5px;
+    }
+
+    /* CARRITO DESPLEGABLE EN MÓVIL */
+    .carrito-dropdown {
+        width: 90%;
+        left: 5%;
+        top: 120px; /* Ajustado para el nuevo alto del menú */
+        box-shadow: 8px 8px 0px #000;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-right > a {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        box-shadow: 3px 3px 0px #e74c3c;
+    }
+
+    .user-menu-container {
+        font-size: 0.7rem;
+    }
+
+    .pelota {
+        width: 40px;
+        height: 40px;
+    }
+
+    .item-info .name {
+        font-size: 0.8rem;
+    }
+}

@@ -96,8 +96,64 @@
     box-shadow: 6px 6px 0px #e74c3c; /* Sombra roja para el login */
 }
 
-/* Ajuste Responsive */
+/* --- AJUSTES EXTRA PARA RESPONSIVE EN LANDING --- */
+
 @media (max-width: 768px) {
+    .main-landing {
+        /* Permitimos scroll si el contenido es muy alto en móviles pequeños */
+        height: auto;
+        min-height: 100vh;
+        padding: 100px 0 50px 0; 
+        overflow-y: auto;
+    }
+
     .landing-title { font-size: 3rem; }
     .landing-content { padding: 30px; }
+
+    .landing-content {
+        padding: 40px 20px;
+        box-shadow: 12px 12px 0px #000; /* Sombra reducida */
+        width: 85%;
+    }
+
+    .landing-title {
+        font-size: 2.8rem; /* Reducción para evitar saltos de línea raros */
+        letter-spacing: -1px;
+    }
+
+    .red-box {
+        transform: rotate(0deg); /* Menos rotación para que el texto no se corte */
+        padding: 5px 10px;
+        border: 3px solid #000;
+    }
+
+    .landing-subtitle {
+        font-size: 1rem;
+        margin: 20px 0;
+    }
+
+    .landing-buttons-grid {
+        grid-template-columns: 1fr; /* Un botón debajo de otro */
+        gap: 15px;
+    }
+
+    .landing-btn {
+        padding: 15px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-title {
+        font-size: 2.2rem;
+    }
+
+    .landing-content {
+        box-shadow: 8px 8px 0px #000; /* Sombra mínima pero brutalista */
+    }
+
+    /* Ocultamos el canvas en móviles muy pequeños para mejorar rendimiento */
+    .landing-canvas {
+        display: none;
+    }
 }

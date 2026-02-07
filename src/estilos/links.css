@@ -64,3 +64,63 @@
 .nav-link:active {
   transform: scale(0.95);
 }
+
+
+/* --- RESPONSIVE PARA LA NAVEGACIÓN --- */
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column; /* Apilamos logo/enlaces en vertical */
+        align-items: center;
+        gap: 12px;
+        padding: 20px 10px;
+        background: rgba(0, 0, 0, 0.9); /* Fondo sólido para legibilidad */
+    }
+
+    .nav-link {
+        font-size: 16px;
+        padding: 10px 20px;
+        width: 80%; /* Enlaces más anchos para facilitar el clic */
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link:hover {
+        transform: none; /* Quitamos el salto en móvil para evitar bugs visuales */
+        background: rgba(255, 0, 0, 0.2);
+    }
+
+    /* Contenedor de Auth (Bienvenido + Botones) */
+    .nav span, .nav button, .nav > a:not(.nav-link) {
+        width: 90%;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .nav > a:not(.nav-link) {
+        order: -1; /* Opcional: pone el botón de Login arriba de todo */
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .nav button {
+        border-color: #ff3333;
+        padding: 12px;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav {
+        gap: 8px;
+    }
+
+    .nav-link {
+        font-size: 15px;
+    }
+    
+    .nav span {
+        font-size: 13px;
+        opacity: 0.8;
+    }
+}

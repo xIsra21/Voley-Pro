@@ -142,3 +142,68 @@
         font-size: 1.8rem;
     }
 }
+
+/* --- AJUSTES EXTRA PARA LA PÁGINA DE PRODUCTO --- */
+
+@media (max-width: 900px) {
+    .producto-page-wrapper {
+        padding: 20px 5%;
+        margin-top: 80px;
+    }
+
+    .producto-container-brutal {
+        padding: 20px;
+        gap: 25px;
+        box-shadow: 10px 10px 0px #000; /* Sombra reducida */
+    }
+
+    .producto-img-frame {
+        max-width: 400px;
+        margin: 0 auto; /* Centramos la imagen en el flujo vertical */
+    }
+
+    .producto-precio-big {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .producto-titulo-main {
+        text-align: center;
+    }
+
+    .categoria-badge {
+        display: table; /* Ayuda a centrar con margin auto */
+        margin: 0 auto 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .producto-titulo-main {
+        font-size: 1.6rem;
+    }
+
+    .producto-precio-big {
+        font-size: 1.8rem;
+    }
+
+    .main-buy-btn {
+        padding: 16px;
+        font-size: 1rem;
+        /* Hacemos el botón un poco más "gordo" para el dedo */
+        position: sticky;
+        bottom: 10px;
+        box-shadow: 0 4px 0 #000;
+        z-index: 10;
+    }
+
+    .back-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .producto-detalles-tecnicos p {
+        font-size: 0.9rem;
+    }
+}

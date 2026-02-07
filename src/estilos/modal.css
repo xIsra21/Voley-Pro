@@ -75,3 +75,42 @@
     background: #000;
     border: 2px solid #f0f0f0;
 }
+
+/* --- RESPONSIVE PARA MODALES --- */
+
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 30px 20px;
+        /* Reducimos la sombra para que el modal no se salga de la pantalla */
+        box-shadow: 10px 10px 0px #000; 
+        border: 3px solid #000;
+        width: 95%; /* Más ancho en móvil para aprovechar el espacio */
+        margin: 10px;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        width: 40px; /* Un poco más grande para el dedo */
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 25px 15px;
+        box-shadow: 6px 6px 0px #000; /* Sombra mínima pero con estilo */
+    }
+
+    /* Evitamos que el contenido del modal cause scroll horizontal interno */
+    .modal-content {
+        overflow-x: hidden;
+    }
+
+    /* Si el modal tiene títulos grandes dentro, los ajustamos */
+    .modal-content h2 {
+        font-size: 1.4rem;
+        margin-top: 10px;
+    }
+}

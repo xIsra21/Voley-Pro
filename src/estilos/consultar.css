@@ -99,3 +99,54 @@
         margin: 0 auto;
     }
 }
+
+/* --- AJUSTES EXTRA PARA RESPONSIVE EN CONSULTAR --- */
+
+@media (max-width: 768px) {
+    .consultar-container {
+        padding: 20px 15px;
+    }
+
+    .consultar-title {
+        font-size: 1.5rem;
+        display: block; /* Para que ocupe todo el ancho y el borde luzca mejor */
+        text-align: center;
+    }
+
+    .consultar-content {
+        /* Bajamos de 200px 1fr a una sola columna un poco antes */
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .consultar-image-frame {
+        max-width: 200px;
+        margin: 0 auto 10px;
+        box-shadow: 6px 6px 0px #000; /* Sombra un poco más pequeña */
+    }
+
+    .detail-row {
+        flex-direction: column; /* Apilamos precio y categoría si van juntos */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .consultar-title {
+        font-size: 1.3rem;
+    }
+
+    .detail-value {
+        font-size: 1rem;
+    }
+
+    .detail-value.highlight {
+        font-size: 1.3rem; /* El precio sigue destacando pero no rompe la línea */
+    }
+
+    /* Ajuste para que las etiquetas no se corten */
+    .category-badge {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+}

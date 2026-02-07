@@ -146,3 +146,56 @@ html {
 .perfil-container * {
     box-sizing: border-box; /* Esto evita que los inputs vibren al ganar foco */
 }
+
+/* --- AJUSTES RESPONSIVE PARA PERFIL --- */
+
+@media (max-width: 768px) {
+    .perfil-container {
+        padding: 100px 15px 40px 15px; /* Más espacio arriba para no chocar con el menú */
+        align-items: flex-start; /* Mejor para formularios largos en móvil */
+    }
+
+    .perfil-container .card {
+        box-shadow: 6px 6px 0px #cccccc; /* Sombra más ligera para que no agobie */
+        width: 100%;
+    }
+
+    .perfil-header {
+        padding: 20px;
+    }
+
+    .perfil-container img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .perfil-container h2 {
+        font-size: 1.1rem;
+    }
+
+    .perfil-form-section {
+        padding: 20px; /* Reducimos padding interno para ganar espacio de escritura */
+    }
+}
+
+@media (max-width: 480px) {
+    .perfil-container h3 {
+        font-size: 0.8rem;
+    }
+
+    .perfil-container input[type="password"] {
+        padding: 14px; /* Aumentamos ligeramente para que sea fácil tocar con el dedo */
+        font-size: 16px; /* Evita el zoom automático en iOS */
+    }
+
+    .btn-submit-profile {
+        padding: 18px; /* Botón grande, tipo "botón de acción" de móvil */
+        letter-spacing: 1px;
+    }
+
+    /* Ajuste para el texto Bienvenido/Email que suele ser largo */
+    .perfil-container h2 {
+        word-break: break-all; 
+        font-size: 1rem;
+    }
+}

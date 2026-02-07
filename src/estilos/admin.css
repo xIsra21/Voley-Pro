@@ -207,3 +207,85 @@
     font-style: italic;
     color: #666;
 }
+
+/* --- RESPONSIVE DESIGN PARA ADMIN --- */
+
+@media (max-width: 992px) {
+    .admin-title {
+        font-size: 2.2rem;
+    }
+    
+    .admin-actions-cell {
+        gap: 8px; /* Reducimos espacio entre botones */
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-wrapper {
+        padding: 20px 3%;
+        margin-top: 80px; /* Ajuste para navbars móviles */
+    }
+
+    .admin-title {
+        font-size: 1.8rem;
+        border-left: 6px solid #e74c3c;
+    }
+
+    /* BUSCADOR RESPONSIVE */
+    .admin-search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .results-count {
+        text-align: center;
+        order: -1; /* Ponemos el contador arriba del buscador en móvil */
+    }
+
+    .clear-search-btn {
+        right: 15px; /* Ajustamos la X al nuevo ancho total */
+        top: 70%; /* La bajamos un poco porque el contenedor creció */
+    }
+
+    /* LA TABLA BRUTALISTA EN MÓVIL */
+    /* El overflow-x: auto que ya tienes en .admin-table-container 
+       permite que el usuario deslice la tabla lateralmente. */
+    .admin-table th, .admin-table td {
+        padding: 12px 10px;
+        font-size: 0.9rem;
+    }
+
+    .admin-thumb {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* BOTONES DE ACCIÓN EN MÓVIL */
+    .admin-actions-cell {
+        flex-direction: column; /* Apilamos botones para que no se corten */
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .admin-actions-cell button {
+        width: 100%; /* Botones a lo ancho de la celda */
+        padding: 8px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ocultamos columnas menos importantes para ganar espacio */
+    .col-origen, .col-id { 
+        display: none; 
+    }
+    
+    .admin-title {
+        font-size: 1.5rem;
+    }
+
+    .admin-btn-crear {
+        width: 100%;
+        font-size: 1rem;
+    }
+}

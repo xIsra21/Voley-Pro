@@ -91,3 +91,53 @@
     font-weight: 400;
     text-transform: none;
 }
+
+/* --- RESPONSIVE PARA EL FORMULARIO DE CREAR --- */
+
+@media (max-width: 768px) {
+    .crear {
+        padding: 20px 10px;
+    }
+
+    .crear h2 {
+        font-size: 1.6rem;
+        display: block;
+        text-align: center;
+        border-bottom: 3px solid #000;
+    }
+
+    .crear label {
+        font-size: 0.8rem;
+        margin-bottom: -10px; /* Ajustamos un poco el espacio */
+    }
+
+    .crear input {
+        padding: 12px;
+        font-size: 0.95rem; /* Evita que iOS haga zoom automático al enfocar */
+        box-shadow: 3px 3px 0px #000; /* Sombra un poco más ligera */
+    }
+
+    .admin-btn {
+        padding: 15px;
+        font-size: 1rem;
+        box-shadow: 5px 5px 0px #e74c3c;
+    }
+}
+
+@media (max-width: 480px) {
+    .crear h2 {
+        font-size: 1.4rem;
+    }
+
+    /* En móviles muy pequeños, eliminamos el efecto transform focus 
+       para evitar saltos visuales incómodos al escribir */
+    .crear input:focus {
+        transform: none;
+        box-shadow: 4px 4px 0px #f1a90f;
+    }
+
+    .error {
+        font-size: 0.7rem;
+        padding: 6px;
+    }
+}

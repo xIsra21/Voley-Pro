@@ -197,3 +197,78 @@
     padding: 100px 0;
     width: 100%;
 }
+
+/* --- AJUSTES RESPONSIVOS PARA LA TIENDA --- */
+
+@media (max-width: 768px) {
+    .tienda-wrapper {
+        margin-top: 80px; /* Reducimos margen superior para móvil */
+        padding: 0 4%;
+    }
+
+    /* Buscador más compacto */
+    .brutal-input {
+        margin-top: 15px;
+        padding: 12px;
+        font-size: 0.9rem;
+        box-shadow: 5px 5px 0px #000;
+    }
+
+    /* Submenú de categorías con scroll horizontal si hay muchas */
+    .submenu-categorias {
+        justify-content: flex-start; /* Alineamos a la izquierda para el scroll */
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 15px 5px;
+        gap: 10px;
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+        background: #f8f8f8; /* Fondo sólido para que al ser sticky no se transparente el texto de abajo */
+        margin: 0 -4%; /* Expandimos al borde de la pantalla */
+        padding-left: 4%;
+    }
+
+    /* Ocultar scrollbar visual en el submenú */
+    .submenu-categorias::-webkit-scrollbar {
+        display: none;
+    }
+
+    .brutal-cat-btn {
+        flex: 0 0 auto; /* Evita que los botones se encojan */
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    /* Grid de 2 columnas o 1 según el tamaño */
+    .cuerpo {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .brutal-card {
+        padding: 12px;
+        box-shadow: 6px 6px 0px #000;
+    }
+
+    .brutal-card h3 {
+        font-size: 0.9rem;
+        min-height: 2em;
+    }
+
+    .precio-tag {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    /* En teléfonos muy pequeños, volvemos a 1 sola columna para que la imagen sea grande */
+    .cuerpo {
+        grid-template-columns: 1fr;
+    }
+    
+    .brutal-card {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+}
