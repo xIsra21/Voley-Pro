@@ -121,8 +121,11 @@
 /* --- AJUSTES RESPONSIVE TOTALMENTE CENTRADOS --- */
 
 @media (max-width: 768px) {
-    .autor-card-principal h1 {
-        font-size: 1.8rem;
+    .autor-page {
+        margin-top: 80px;
+        padding: 20px 15px;
+        align-items: center; /* Centra todo el contenido hijo */
+        overflow-x: hidden; /* Evita scroll lateral por sombras */
     }
 
     .autor-avatar {
@@ -130,15 +133,36 @@
         height: 100px;
     }
 
+    .autor-card-principal {
+        padding: 30px 20px;
+        width: 100%;
+        /* Ajustamos el ancho restando el tamaño de la sombra para que no desborde */
+        max-width: calc(100% - 15px); 
+        box-shadow: 10px 10px 0px #000;
+        margin: 0 auto;
+    }
+
+    .autor-card-principal h1 {
+        font-size: 2.2rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr; /* Una columna para que nada se amontone */
+        width: 100%;
+        max-width: calc(100% - 15px);
+        margin: 0 auto;
+        gap: 25px;
+    }
+
+    .info-card {
+        width: 60%;
+        box-shadow: 6px 6px 0px #e74c3c;
+    }
+
     .autor-card-principal, .info-card {
         /* Sombras más pequeñas en móviles muy estrechos para mayor estabilidad */
         box-shadow: 6px 6px 0px #000;
         max-width: calc(100% - 8px);
-    }
-    
-    .info-card {
-        width: 60%;
-        box-shadow: 6px 6px 0px #e74c3c;
     }
 
     .tech-tags {
