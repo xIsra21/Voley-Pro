@@ -264,7 +264,7 @@
 
 @media (max-width: 992px) {
     .menu-center-group {
-        gap: 5px;
+        gap: 2px;
     }
     
     .menu-center-group a {
@@ -289,7 +289,7 @@
         justify-content: space-between !important;
         align-items: center;
         padding: 0 10px;
-        gap: 5px;
+        gap: 1px;
     }
 
     /* Forzamos que los tres bloques coexistan en la misma línea */
