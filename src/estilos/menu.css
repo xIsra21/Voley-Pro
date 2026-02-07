@@ -279,84 +279,75 @@
 
 /* --- MANTENER DISEÑO PC EN MÓVIL (ESCALA MINI) --- */
 
+/* --- ESTÉTICA PC ADAPTADA A MÓVIL (HORIZONTAL ESTRICTO) --- */
+
 @media (max-width: 768px) {
     .menu {
-        height: 65px; /* Altura más compacta */
-        padding: 0 2%; /* Menos margen lateral */
-        gap: 5px; /* Espacio mínimo entre bloques */
+        height: 60px; /* Altura fija para no tapar la app */
+        display: flex !important;
+        flex-direction: row !important; /* Forzamos horizontal */
+        justify-content: space-between !important;
+        align-items: center;
+        padding: 0 10px;
+        gap: 5px;
     }
 
-    /* Reducimos la importancia de los bloques laterales para dar aire al centro */
-    .menu-left, .menu-right {
+    /* Forzamos que los tres bloques coexistan en la misma línea */
+    .menu-left, 
+    .menu-center-group, 
+    .menu-right {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        flex-shrink: 0; /* Evita que los bloques se colapsen */
+    }
+
+    .menu-left { flex: 0 1 auto; }
+    .menu-right { flex: 0 1 auto; justify-content: flex-end; }
+    
+    /* El centro se expande pero sin permitir que los hijos bajen */
+    .menu-center-group { 
         flex: 1; 
+        justify-content: center; 
+        gap: 4px;
+        flex-wrap: nowrap !important; 
     }
 
-    .menu-center-group {
-        flex: 3; /* El centro toma la prioridad */
-        gap: 4px; /* Espacio mínimo entre botones */
+    /* REDUCCIÓN DE ESCALA PARA BOTONES CENTRALES */
+    .menu-center-group a {
+        font-size: 0.55rem !important; /* Tamaño mini pero legible */
+        padding: 4px 5px !important;
+        border-width: 1.5px !important;
+        box-shadow: 2px 2px 0px #000 !important;
+        white-space: nowrap; /* Evita que el texto se parta en dos líneas */
+        text-transform: uppercase;
     }
 
-    /* PELOTA (LOGO) */
+    /* REDUCCIÓN DE ESCALA PARA EXTREMOS */
     .pelota {
-        width: 30px;
-        height: 30px;
-        filter: drop-shadow(2px 2px 0px #000);
+        width: 28px !important;
+        height: 28px !important;
     }
 
     .badge-count {
-        min-width: 14px;
-        height: 14px;
-        font-size: 0.6rem;
-    }
-
-    /* BOTONES CENTRALES MINI */
-    .menu-center-group a {
-        font-size: 0.6rem; /* Fuente muy pequeña pero legible en negrita */
-        padding: 4px 6px;
-        border-width: 1.5px;
-        letter-spacing: 0;
-        box-shadow: 2px 2px 0px #000;
-    }
-
-    .menu-center-group a:hover {
-        transform: none; /* Quitamos desplazamientos para evitar saltos de línea */
-        box-shadow: 2px 2px 0px #000;
-    }
-
-    /* BLOQUE DERECHO (USUARIO/LOGIN) */
-    .menu-right > a, 
-    .user-menu-container {
-        font-size: 0.6rem;
-        padding: 5px 8px;
-        border-width: 2px;
-        box-shadow: 2px 2px 0px #e74c3c;
-        white-space: nowrap; /* Evita que el nombre de usuario se parta */
+        top: -3px;
+        right: -3px;
+        min-width: 12px;
+        height: 12px;
+        font-size: 0.5rem;
     }
 
     .avatar-trigger {
-        width: 30px;
-        height: 30px;
-        border-width: 2px;
+        width: 30px !important;
+        height: 30px !important;
+        border-width: 2px !important;
+        box-shadow: 2px 2px 0px #000 !important;
     }
 
-    /* CARRITO DESPLEGABLE */
-    .carrito-dropdown {
-        width: 300px;
-        top: 69px;
-        left: 5%;
-        padding: 15px;
-        box-shadow: 8px 8px 0px #000;
-    }
-}
-
-/* AJUSTE EXTREMO PARA MÓVILES MUY PEQUEÑOS (iPhone SE, etc) */
-@media (max-width: 380px) {
-    .menu-center-group a {
-        font-size: 0.55rem;
-        padding: 3px 5px;
-    }
-    
-    .menu-right > a {
-        padding: 4px 6px;
+    /* AJUSTE PARA EL BUSCADOR QUE SE VE ABAJO */
+    .brutal-input {
+        margin-top: 10px !important;
+        padding: 10px !important;
+        font-size: 0.8rem !important;
     }
 }
