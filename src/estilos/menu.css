@@ -264,7 +264,7 @@
 
 @media (max-width: 992px) {
     .menu-center-group {
-        gap: 2px;
+        gap: 5px;
     }
     
     .menu-center-group a {

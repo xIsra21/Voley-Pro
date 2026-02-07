@@ -1,8 +1,8 @@
 // src/servicios/context/CartContext.jsx
-import React, { createContext, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useCallback } from 'react';
 import UseStorageState from '../storage/UseStorageState';
 import { toast } from "react-toastify";
-import { supabase } from '../../lib/supabase'; // Asegúrate de que esta ruta sea correcta
+import { supabase } from '../../lib/supabase';
 import { useAuth } from './AuthContext';
 
 const CartContext = createContext();
@@ -13,76 +13,99 @@ export const CartProvider = ({ children }) => {
   const [total, setTotal] = UseStorageState("total", 0);
   const [productos, setProductos] = UseStorageState("productos", []);
 
-  // --- CARGA Y LIMPIEZA AUTOMÁTICA ---
-  useEffect(() => {
-    const sincronizarCarrito = async () => {
-      if (user) {
-        // Al entrar: Traemos datos de Supabase
-        const { data, error } = await supabase
-          .from('carrito')
-          .select('*')
-          .eq('user_id', user.id);
+  // --- FUNCIÓN DE CARGA (REUTILIZABLE) ---
+  const fetchCart = useCallback(async (userId) => {
+    try {
+      // Traemos el carrito pero haciendo un JOIN con la tabla productos 
+      // para evitar datos bugueados o desactualizados
+      const { data, error } = await supabase
+        .from('carrito')
+        .select(`
+          cantidad,
+          productos ( id, nombre, precio, imagen, categoria )
+        `)
+        .eq('user_id', userId);
 
-        if (!error && data.length > 0) {
-          const formateados = data.map(item => ({
-            producto: item.datos_producto,
-            cantidad: item.cantidad
-          }));
-          setProductos(formateados);
-          setTotal(formateados.reduce((acc, p) => acc + (p.producto.precio * p.cantidad), 0));
-        }
-      } else {
-        // Al salir: Limpiamos local
-        setProductos([]);
-        setTotal(0);
+      if (error) throw error;
+
+      if (data) {
+        const formateados = data.map(item => ({
+          producto: item.productos, // Usamos la info fresca de la tabla productos
+          cantidad: item.cantidad
+        })).filter(p => p.producto !== null); // Limpiamos si el producto ya no existe
+
+        setProductos(formateados);
+        const nuevoTotal = formateados.reduce((acc, p) => acc + (p.producto.precio * p.cantidad), 0);
+        setTotal(nuevoTotal);
       }
-    };
-    sincronizarCarrito();
-  }, [user]);
+    } catch (err) {
+      console.error("Error cargando carrito:", err.message);
+    }
+  }, [setProductos, setTotal]);
+
+  // --- SINCRONIZACIÓN AL CAMBIAR DE USUARIO ---
+  useEffect(() => {
+    if (user) {
+      fetchCart(user.id);
+    } else {
+      setProductos([]);
+      setTotal(0);
+    }
+  }, [user, fetchCart]);
 
   const addProducto = async (producto) => {
-    let existe = false;
-    const productosAux = productos.map(p => {
-      if (p.producto.id === producto.id) {
-        existe = true;
-        return { ...p, cantidad: p.cantidad + 1 };
-      }
-      return p;
-    });
+    if (!producto?.id) return; // Evita añadir productos corruptos
 
-    if (!existe) productosAux.push({ producto, cantidad: 1 });
+    let nuevaCantidad = 1;
+    const existe = productos.find(p => p.producto.id === producto.id);
+    
+    if (existe) {
+      nuevaCantidad = existe.cantidad + 1;
+    }
 
-    setProductos(productosAux);
+    // 1. Actualización Local (Inmediata para UX)
+    const nuevosProductos = existe 
+      ? productos.map(p => p.producto.id === producto.id ? { ...p, cantidad: nuevaCantidad } : p)
+      : [...productos, { producto, cantidad: 1 }];
+
+    setProductos(nuevosProductos);
     setTotal(prev => prev + producto.precio);
     toast.success(`${producto.nombre} añadido`);
 
-    // Sincronizar con DB si hay usuario
+    // 2. Sincronización DB (Si hay usuario)
     if (user) {
-      const item = productosAux.find(p => p.producto.id === producto.id);
-      await supabase.from('carrito').upsert({
+      const { error } = await supabase.from('carrito').upsert({
         user_id: user.id,
         producto_id: producto.id,
-        cantidad: item.cantidad,
-        datos_producto: producto
-      });
+        cantidad: nuevaCantidad
+        // NO guardamos datos_producto aquí, usamos el JOIN en el fetch
+      }, { onConflict: 'user_id, producto_id' });
+
+      if (error) console.error("Error sync DB:", error.message);
     }
   };
 
   const eliminarDelCarrito = async (id) => {
     const item = productos.find(p => p.producto.id === id);
-    if (item) {
-      setTotal(prev => prev - (item.producto.precio * item.cantidad));
-      setProductos(productos.filter(p => p.producto.id !== id));
-      toast.info("Producto eliminado");
+    if (!item) return;
 
-      if (user) {
-        await supabase.from('carrito').delete().eq('user_id', user.id).eq('producto_id', id);
-      }
+    // 1. Local
+    setTotal(prev => prev - (item.producto.precio * item.cantidad));
+    setProductos(productos.filter(p => p.producto.id !== id));
+    toast.info("Producto eliminado");
+
+    // 2. DB
+    if (user) {
+      await supabase
+        .from('carrito')
+        .delete()
+        .eq('user_id', user.id)
+        .eq('producto_id', id);
     }
   };
 
   return (
-    <CartContext.Provider value={{ total, setTotal, productos, setProductos, addProducto, eliminarDelCarrito }}>
+    <CartContext.Provider value={{ total, productos, addProducto, eliminarDelCarrito, fetchCart }}>
       {children}
     </CartContext.Provider>
   );
