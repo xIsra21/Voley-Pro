@@ -18,6 +18,34 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    
+    // --- COMPROBACIONES PRAGMÁTICAS ---
+    
+    // 1. Validación de formato de Email (Regex estándar)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("El formato del correo electrónico no es válido.");
+      return;
+    }
+
+    // 2. Validación de Contraseña (Solo se aplica estrictamente en el Registro)
+    // En el Login solo pedimos que no esté vacía para no bloquear accesos por cambios de reglas.
+    if (isSignUp) {
+      if (password.length < 8) {
+        setError("La contraseña debe tener al menos 8 caracteres.");
+        return;
+      }
+      if (!/[A-Z]/.test(password)) {
+        setError("La contraseña debe incluir al menos una letra mayúscula.");
+        return;
+      }
+      if (!/[0-9]/.test(password)) {
+        setError("La contraseña debe incluir al menos un número.");
+        return;
+      }
+    }
+    // --- FIN DE COMPROBACIONES ---
+
     setLoading(true);
 
     try {
@@ -26,19 +54,18 @@ function Login() {
         result = await signUp(email, password);
         if (!result.error) {
           Swal.fire({
-                  title: 'Verifica tu email',
-                  text: "Te ha llegado un correo de confirmacion",
-                  icon: 'success',
-                  confirmButtonText: 'ACEPTAR',
-                  // Aquí aplicamos las clases de arriba
-                  customClass: {
-                      popup: 'brutal-popup',
-                      title: 'brutal-title',
-                      htmlContainer: 'brutal-content',
-                      confirmButton: 'brutal-confirm-btn',
-                  },
-                  buttonsStyling: false // IMPORTANTE: Desactiva los estilos por defecto de Swal
-              });
+            title: 'Verifica tu email',
+            text: "Te ha llegado un correo de confirmación",
+            icon: 'success',
+            confirmButtonText: 'ACEPTAR',
+            customClass: {
+              popup: 'brutal-popup',
+              title: 'brutal-title',
+              htmlContainer: 'brutal-content',
+              confirmButton: 'brutal-confirm-btn',
+            },
+            buttonsStyling: false 
+          });
           setIsSignUp(false);
         }
       } else {
@@ -47,7 +74,14 @@ function Login() {
           navigate('/tienda');
         }
       }
-      if (result?.error) setError(result.error.message);
+      
+      if (result?.error) {
+        // Mapeo de errores comunes de Firebase/Auth para el usuario
+        const msg = result.error.code === 'auth/invalid-credential' 
+          ? "Credenciales incorrectas" 
+          : result.error.message;
+        setError(msg);
+      }
     } catch (err) {
       setError('Error inesperado de conexión');
     } finally {
@@ -99,13 +133,15 @@ function Login() {
             onClick={() => signInWithGoogle()} 
             className="google-btn"
           >
-            <img src="/imagenes/google.png" />
-        
+            <img src="/imagenes/google.png" alt="Google" />
           </button>
         </form>
 
         <div className="login-footer">
-          <button className="text-toggle-btn" onClick={() => setIsSignUp(!isSignUp)}>
+          <button className="text-toggle-btn" onClick={() => {
+            setIsSignUp(!isSignUp);
+            setError(""); // Limpiamos errores al cambiar de modo
+          }}>
             {isSignUp ? '¿Ya tienes cuenta? Inicia Sesión' : '¿No tienes cuenta? Regístrate'}
           </button>
           
