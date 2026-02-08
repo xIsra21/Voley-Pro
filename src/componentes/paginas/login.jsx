@@ -26,11 +26,19 @@ function Login() {
         result = await signUp(email, password);
         if (!result.error) {
           Swal.fire({
-            icon: 'success',
-            title: 'Verifica tu email',
-            text: 'Te hemos enviado un enlace de confirmación.',
-            confirmButtonColor: '#000'
-          });
+                  title: 'Verifica tu email',
+                  text: "Te ha llegado un correo de confirmacion",
+                  icon: 'success',
+                  confirmButtonText: 'ACEPTAR',
+                  // Aquí aplicamos las clases de arriba
+                  customClass: {
+                      popup: 'brutal-popup',
+                      title: 'brutal-title',
+                      htmlContainer: 'brutal-content',
+                      confirmButton: 'brutal-confirm-btn',
+                  },
+                  buttonsStyling: false // IMPORTANTE: Desactiva los estilos por defecto de Swal
+              });
           setIsSignUp(false);
         }
       } else {
