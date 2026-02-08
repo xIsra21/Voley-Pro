@@ -19,30 +19,32 @@ function Login() {
     e.preventDefault();
     setError("");
     
-    // --- COMPROBACIONES PRAGMÁTICAS ---
-    
-    // 1. Validación de formato de Email (Regex estándar)
+    // --- ACUMULACIÓN DE ERRORES ---
+    let erroresEncontrados = [];
+
+    // 1. Validación de Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setError("El formato del correo electrónico no es válido.");
-      return;
+      erroresEncontrados.push("Formato de email inválido.");
     }
 
-    // 2. Validación de Contraseña (Solo se aplica estrictamente en el Registro)
-    // En el Login solo pedimos que no esté vacía para no bloquear accesos por cambios de reglas.
+    // 2. Validación de Contraseña (Solo en Registro)
     if (isSignUp) {
       if (password.length < 8) {
-        setError("La contraseña debe tener al menos 8 caracteres.");
-        return;
+        erroresEncontrados.push("Mínimo 8 caracteres.");
       }
       if (!/[A-Z]/.test(password)) {
-        setError("La contraseña debe incluir al menos una letra mayúscula.");
-        return;
+        erroresEncontrados.push("Falta una letra mayúscula.");
       }
       if (!/[0-9]/.test(password)) {
-        setError("La contraseña debe incluir al menos un número.");
-        return;
+        erroresEncontrados.push("Falta al menos un número.");
       }
+    }
+
+    // Si hay errores, los unimos con un separador visual y cortamos la ejecución
+    if (erroresEncontrados.length > 0) {
+      setError(erroresEncontrados.join(" | "));
+      return;
     }
     // --- FIN DE COMPROBACIONES ---
 
@@ -76,11 +78,7 @@ function Login() {
       }
       
       if (result?.error) {
-        // Mapeo de errores comunes de Firebase/Auth para el usuario
-        const msg = result.error.code === 'auth/invalid-credential' 
-          ? "Credenciales incorrectas" 
-          : result.error.message;
-        setError(msg);
+        setError(result.error.message);
       }
     } catch (err) {
       setError('Error inesperado de conexión');
@@ -120,6 +118,7 @@ function Login() {
             />
           </div>
 
+          {/* El banner ahora mostrará todos los errores concatenados */}
           {error && <div className="error-banner">{error}</div>}
 
           <button type="submit" disabled={loading} className="main-login-btn">
@@ -140,7 +139,7 @@ function Login() {
         <div className="login-footer">
           <button className="text-toggle-btn" onClick={() => {
             setIsSignUp(!isSignUp);
-            setError(""); // Limpiamos errores al cambiar de modo
+            setError("");
           }}>
             {isSignUp ? '¿Ya tienes cuenta? Inicia Sesión' : '¿No tienes cuenta? Regístrate'}
           </button>
