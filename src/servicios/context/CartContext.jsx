@@ -79,7 +79,7 @@ export const CartProvider = ({ children }) => {
   };
 
   // 4. ELIMINAR PRODUCTO
-  const eliminarDelCarrito = async (id) => {
+  const eliminarDelCarrito = async (id, producto) => {
     const nuevosProductos = productos.filter(p => p.producto.id !== id);
     setProductos(nuevosProductos);
 
@@ -89,7 +89,7 @@ export const CartProvider = ({ children }) => {
         .eq('user_id', user.id)
         .eq('producto_id', id);
     }
-    toast.success(`producto eliminado`)
+    toast.success(`${producto.nombre} eliminado`)
     // Si no hay usuario, el useEffect de arriba ya se encarga de actualizar el LocalStorage
   };
 

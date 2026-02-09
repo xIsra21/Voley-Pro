@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import './App.css'
+import './estilos/toast.css'
 import Menu from './componentes/menu'
 import Cuerpo from './componentes/paginas/cuerpo'
 import Footer from './componentes/footer'
@@ -83,14 +84,20 @@ function App() {
             } />
           </Routes>
 
+          // En tu archivo principal donde declaras el ToastContainer
           <ToastContainer
-            position="top-right"
-            autoClose={2000}
+            position="bottom-right" // Sugerencia: En e-commerce, abajo a la derecha estorba menos a la navegación
+            autoClose={2500}
             hideProgressBar={false}
-            newestOnTop={false}
+            newestOnTop
             closeOnClick
+            pauseOnFocusLoss
+            draggable
             pauseOnHover
-            theme='dark'
+            theme="dark"
+            toastClassName="custom-toast" // Clase para el cuerpo
+            bodyClassName="custom-toast-body" // Clase para el texto
+            progressClassName="custom-toast-progress" // Clase para la barra
           />
       </CartProvider>
     </AuthProvider>

@@ -133,7 +133,7 @@ function Menu() {
                       </span>
                       <button 
                         className="del-btn" 
-                        onClick={() => eliminarDelCarrito(p.producto.id)}
+                        onClick={() => eliminarDelCarrito(p.producto.id, p.producto.nombre)}
                       >
                         X
                       </button>
