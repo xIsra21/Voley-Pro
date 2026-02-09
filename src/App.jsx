@@ -46,7 +46,6 @@ function App() {
             } />
             <Route path="/login" element={
               <>
-                <Menu/>
                 <Login />
               </>
             } />

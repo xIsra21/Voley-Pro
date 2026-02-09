@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import '../../estilos/autor.css';
 
 const Autor = () => {
-    const fechaSesion = new Date().toLocaleString();
-
     return (
     <motion.div 
         className="autor-page"
@@ -21,10 +19,23 @@ const Autor = () => {
             transition={{ type: "spring", stiffness: 100 }}
         >
             <div className="autor-avatar">
-                <img src="/pelota.png" alt="Avatar" /> {/* Puedes poner tu foto aquí */}
+                <img src="/pelota.png" alt="Avatar" />
             </div>
             <h1>Israel Royano Oro</h1>
             <p className="autor-tagline">Desarrollador Full Stack | Amante del Voleibol</p>
+
+            {/* --- NUEVA SECCIÓN DE BOTONES SOCIALES --- */}
+            <div className="autor-social-links">
+                <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="social-btn github">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" />
+                    GITHUB
+                </a>
+                <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" className="social-btn linkedin">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+                    LINKEDIN
+                </a>
+            </div>
+            {/* --------------------------------------- */}
 
         <div className="autor-details">
             <p><strong>Soy Israel Royano Oro, estudiante en prácticas de DAW, enfocado en el desarrollo de aplicaciones web con un estilo visual Neo-brutalista. 
