@@ -100,6 +100,7 @@
     letter-spacing: 1px;
     /* Evitamos que el header pierda el borde */
     border-bottom: 3px solid #000;
+    text-align: center;
 }
 
 .admin-table td {
