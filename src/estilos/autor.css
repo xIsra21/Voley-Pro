@@ -136,7 +136,7 @@
 
     .autor-card-principal {
         padding: 30px 20px;
-        width: 100%;
+        width: 90%;
         /* Ajustamos el ancho restando el tamaño de la sombra para que no desborde */
         box-shadow: 10px 10px 0px #000;
         margin: 0 auto;
@@ -183,6 +183,10 @@
     .autor-avatar {
         width: 100px;
         height: 100px;
+    }
+
+    .autor-card-principal{
+        width: 90%;
     }
 
     .autor-card-principal, .info-card {
