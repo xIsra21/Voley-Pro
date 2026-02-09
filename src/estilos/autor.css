@@ -2,7 +2,7 @@
 
 .autor-page {
     margin-top: 100px;
-    margin-right: 100px;
+    width: 70%;
     padding: 40px 10%;
     background-color: #f8f8f8;
     background-image: radial-gradient(#d1d1d1 1px, transparent 1px); /* Malla de puntos */
@@ -145,6 +145,7 @@
 
     .autor-card-principal h1 {
         font-size: 2.2rem;
+        width: 80%;
     }
 
     .info-grid {
