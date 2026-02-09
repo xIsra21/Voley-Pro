@@ -111,7 +111,7 @@
     background-color: #fff;
 }
 
-.admin-table td:last-child {
+.admin-table td {
     text-align: center;
 }
 
