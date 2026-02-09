@@ -92,7 +92,8 @@
     box-shadow: 2px 2px 0px #000;
 }
 
-.github:hover { background-color: #f1f1f1; }
+.github:hover { background-color: #000; color: #fff;}
+.github:hover img { filter: brightness(0) invert(1); }
 .linkedin:hover { background-color: #0077b5; color: #fff; }
 .linkedin:hover img { filter: brightness(0) invert(1); }
 
