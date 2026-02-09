@@ -22,7 +22,7 @@ const Autor = () => {
                 <img src="/pelota.png" alt="Avatar" />
             </div>
             <h1>Israel Royano Oro</h1>
-            <p className="autor-tagline">Desarrollador Full Stack | Amante del Voleibol</p>
+            <p className="autor-tagline">Desarrollador Full Stack</p>
 
             {/* --- NUEVA SECCIÓN DE BOTONES SOCIALES --- */}
             <div className="autor-social-links">
