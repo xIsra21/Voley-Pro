@@ -84,7 +84,7 @@ function App() {
             } />
           </Routes>
 
-          // En tu archivo principal donde declaras el ToastContainer
+         
           <ToastContainer
             position="top-right"
             autoClose={2000}
@@ -92,7 +92,7 @@ function App() {
             newestOnTop={false}
             closeOnClick
             pauseOnHover
-            theme="light" // Usamos light como base para controlar nosotros los colores "brutales"
+            theme="light" 
             toastClassName="brutal-toast"
             bodyClassName="brutal-toast-body"
             progressClassName="brutal-toast-progress"
