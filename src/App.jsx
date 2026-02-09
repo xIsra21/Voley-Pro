@@ -40,7 +40,6 @@ function App() {
               <> 
                 <Menu/>
                 <Sistema />
-                <Footer />
               </>
             } />
             <Route path="/login" element={
