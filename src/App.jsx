@@ -86,18 +86,16 @@ function App() {
 
           // En tu archivo principal donde declaras el ToastContainer
           <ToastContainer
-            position="bottom-right" // Sugerencia: En e-commerce, abajo a la derecha estorba menos a la navegación
-            autoClose={2500}
+            position="top-right"
+            autoClose={2000}
             hideProgressBar={false}
-            newestOnTop
+            newestOnTop={false}
             closeOnClick
-            pauseOnFocusLoss
-            draggable
             pauseOnHover
-            theme="dark"
-            toastClassName="custom-toast" // Clase para el cuerpo
-            bodyClassName="custom-toast-body" // Clase para el texto
-            progressClassName="custom-toast-progress" // Clase para la barra
+            theme="light" // Usamos light como base para controlar nosotros los colores "brutales"
+            toastClassName="brutal-toast"
+            bodyClassName="brutal-toast-body"
+            progressClassName="brutal-toast-progress"
           />
       </CartProvider>
     </AuthProvider>

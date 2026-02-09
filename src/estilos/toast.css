@@ -1,37 +1,40 @@
-/* Contenedor principal del toast */
-.custom-toast {
-  background: rgba(25, 25, 25, 0.9) !important; /* Fondo oscuro semi-transparente */
-  backdrop-filter: blur(8px); /* Efecto cristal */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5) !important;
-  color: #ffffff !important;
-  font-family: 'Segoe UI', Roboto, sans-serif;
+/* Contenedor principal del Toast */
+.brutal-toast {
+    border: 3px solid #000 !important; /* Borde grueso negro característico */
+    border-radius: 0px !important;    /* Esquinas totalmente cuadradas */
+    box-shadow: 8px 8px 0px #000 !important; /* Sombra sólida, no difuminada */
+    font-family: 'Arial Black', sans-serif; /* Tipografía de impacto */
+    padding: 15px !important;
 }
 
-/* Estilo específico para Éxito (Verde Neón) */
-.Toastify__toast--success.custom-toast {
-  border-left: 5px solid #00ff88;
+/* Variación para éxito (Success) */
+.Toastify__toast--success.brutal-toast {
+    background-color: #00ff88 !important; /* Verde neón plano */
+    color: #000 !important;
 }
 
-/* Estilo específico para Error (Rojo Coral) */
-.Toastify__toast--error.custom-toast {
-  border-left: 5px solid #ff4b2b;
+/* Variación para error (Error) */
+.Toastify__toast--error.brutal-toast {
+    background-color: #ff4b2b !important; /* Rojo vibrante plano */
+    color: #fff !important;
 }
 
 /* Texto del mensaje */
-.custom-toast-body {
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 10px;
+.brutal-toast-body {
+    font-weight: 800;
+    text-transform: uppercase; /* Para seguir el estilo "¿ESTÁS SEGURO?" */
+    letter-spacing: 1px;
 }
 
-/* Barra de progreso */
-.custom-toast-progress {
-  background: linear-gradient(to right, #00c6ff, #0072ff) !important; /* Degradado azul */
+/* Barra de progreso brutalista */
+.brutal-toast-progress {
+    height: 8px !important;
+    background: #000 !important;
+    opacity: 1 !important;
 }
 
-/* Iconos (opcional: cambiar el color de los iconos por defecto) */
-.Toastify__toast-icon {
-  width: 22px;
+/* Botón de cerrar (la X) */
+.Toastify__close-button {
+    color: #000 !important;
+    opacity: 1;
 }
