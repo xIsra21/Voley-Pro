@@ -19,7 +19,7 @@ const Autor = () => {
             transition={{ type: "spring", stiffness: 100 }}
         >
             <div className="autor-avatar">
-                <img src="/pelota.png" alt="Avatar" />
+                <img src="/imagenes/pelota.png" alt="Avatar" />
             </div>
             <h1>Israel Royano Oro</h1>
             <p className="autor-tagline">Desarrollador Full Stack</p>
