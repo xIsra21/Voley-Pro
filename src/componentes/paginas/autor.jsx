@@ -26,11 +26,11 @@ const Autor = () => {
 
             {/* --- NUEVA SECCIÓN DE BOTONES SOCIALES --- */}
             <div className="autor-social-links">
-                <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="social-btn github">
+                <a href="https://github.com/xIsra21" target="_blank" rel="noopener noreferrer" className="social-btn github">
                     <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" />
                     GITHUB
                 </a>
-                <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" className="social-btn linkedin">
+                <a href="https://www.linkedin.com/in/israel-royano-oro-2bab512b8/" target="_blank" rel="noopener noreferrer" className="social-btn linkedin">
                     <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
                     LINKEDIN
                 </a>
