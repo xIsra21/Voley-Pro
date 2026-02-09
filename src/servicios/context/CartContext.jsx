@@ -89,6 +89,7 @@ export const CartProvider = ({ children }) => {
         .eq('user_id', user.id)
         .eq('producto_id', id);
     }
+    toast.success(`producto eliminado`)
     // Si no hay usuario, el useEffect de arriba ya se encarga de actualizar el LocalStorage
   };
 
